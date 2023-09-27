@@ -13,7 +13,7 @@ const dashboard = {
     children: [
         {
             id: 'chatflows',
-            title: 'Chatflows',
+            title: 'Workspace',
             type: 'item',
             url: '/chatflows',
             icon: icons.IconHierarchy,

@@ -19,7 +19,7 @@ class TokenTextSplitter_TextSplitters implements INode {
         this.name = 'tokenTextSplitter'
         this.version = 1.0
         this.type = 'TokenTextSplitter'
-        this.icon = 'tiktoken.svg'
+        this.icon = 'tiktoken.png'
         this.category = 'Text Splitters'
         this.description = `Splits a raw text string by first converting the text into BPE tokens, then split these tokens into chunks and convert the tokens within a single chunk back into text.`
         this.baseClasses = [this.type, ...getBaseClasses(TokenTextSplitter)]

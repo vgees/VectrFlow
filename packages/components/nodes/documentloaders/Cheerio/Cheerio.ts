@@ -1,3 +1,4 @@
+/*
 import { INode, INodeData, INodeParams } from '../../../src/Interface'
 import { TextSplitter } from 'langchain/text_splitter'
 import { CheerioWebBaseLoader } from 'langchain/document_loaders/web/cheerio'
@@ -141,3 +142,4 @@ class Cheerio_DocumentLoaders implements INode {
 }
 
 module.exports = { nodeClass: Cheerio_DocumentLoaders }
+*/

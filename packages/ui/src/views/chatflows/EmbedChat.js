@@ -127,7 +127,7 @@ const chatwindowConfig = (isReact = false) => {
                         placeholder: "Type your question",
                         backgroundColor: "#ffffff",
                         textColor: "#303235",
-                        sendButtonColor: "#3B81F6",
+                        sendButtonColor: "linear-gradient(60deg, #3864B3, #2F5597, #EC73FF)",
                     }
                 }`
         : `chatWindow: {
@@ -153,7 +153,7 @@ const chatwindowConfig = (isReact = false) => {
                     placeholder: "Type your question",
                     backgroundColor: "#ffffff",
                     textColor: "#303235",
-                    sendButtonColor: "#3B81F6",
+                    sendButtonColor: "linear-gradient(60deg, #3864B3, #2F5597, #EC73FF)",
                 }
             }`
 }

@@ -18,7 +18,7 @@ class BufferMemory_Memory implements INode {
         this.name = 'bufferMemory'
         this.version = 1.0
         this.type = 'BufferMemory'
-        this.icon = 'memory.svg'
+        this.icon = 'memory.png'
         this.category = 'Memory'
         this.description = 'Remembers previous conversational back and forths directly'
         this.baseClasses = [this.type, ...getBaseClasses(BufferMemory)]

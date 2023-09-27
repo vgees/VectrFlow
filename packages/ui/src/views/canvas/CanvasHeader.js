@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { useEffect, useRef, useState } from 'react'
 
+import Logo from 'assets/images/flowise_logo.png'
+
 // material-ui
 import { useTheme } from '@mui/material/styles'
 import { Avatar, Box, ButtonBase, Typography, Stack, TextField } from '@mui/material'
@@ -55,7 +57,7 @@ const CanvasHeader = ({ chatflow, handleSaveFlow, handleDeleteFlow, handleLoadFl
             handleDeleteFlow()
         } else if (setting === 'analyseChatflow') {
             setAnalyseDialogProps({
-                title: 'Analyse Chatflow',
+                title: 'Analyse Workspace',
                 chatflow: chatflow
             })
             setAnalyseDialogOpen(true)
@@ -167,6 +169,10 @@ const CanvasHeader = ({ chatflow, handleSaveFlow, handleDeleteFlow, handleLoadFl
 
     return (
         <>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                {/* Add your logo here */}
+                <img src={Logo} alt='' style={{ width: '150px', height: '50x', marginRight: '10px' }} />
+            </Box>
             <Box>
                 <ButtonBase title='Back' sx={{ borderRadius: '50%' }}>
                     <Avatar
@@ -175,11 +181,11 @@ const CanvasHeader = ({ chatflow, handleSaveFlow, handleDeleteFlow, handleLoadFl
                             ...theme.typography.commonAvatar,
                             ...theme.typography.mediumAvatar,
                             transition: 'all .2s ease-in-out',
-                            background: theme.palette.secondary.light,
-                            color: theme.palette.secondary.dark,
+                            background: 'linear-gradient(60deg, #3864B3, #2F5597, #EC73FF)',
+                            color: theme.palette.secondary.light,
                             '&:hover': {
-                                background: theme.palette.secondary.dark,
-                                color: theme.palette.secondary.light
+                                background: 'linear-gradient(60deg, #EC73FF, #2F5597, #3864B3)',
+                                color: theme.palette.secondary.dark
                             }
                         }}
                         color='inherit'
@@ -212,11 +218,11 @@ const CanvasHeader = ({ chatflow, handleSaveFlow, handleDeleteFlow, handleLoadFl
                                         ...theme.typography.mediumAvatar,
                                         transition: 'all .2s ease-in-out',
                                         ml: 1,
-                                        background: theme.palette.secondary.light,
-                                        color: theme.palette.secondary.dark,
+                                        background: 'linear-gradient(60deg, #3864B3, #2F5597, #EC73FF)',
+                                        color: theme.palette.secondary.light,
                                         '&:hover': {
-                                            background: theme.palette.secondary.dark,
-                                            color: theme.palette.secondary.light
+                                            background: 'linear-gradient(60deg, #EC73FF, #2F5597, #3864B3)',
+                                            color: theme.palette.secondary.dark
                                         }
                                     }}
                                     color='inherit'
@@ -246,12 +252,12 @@ const CanvasHeader = ({ chatflow, handleSaveFlow, handleDeleteFlow, handleLoadFl
                                     ...theme.typography.commonAvatar,
                                     ...theme.typography.mediumAvatar,
                                     transition: 'all .2s ease-in-out',
-                                    background: theme.palette.success.light,
-                                    color: theme.palette.success.dark,
+                                    background: 'linear-gradient(60deg, #3864B3, #2F5597, #EC73FF)',
+                                    color: theme.palette.success.light,
                                     ml: 1,
                                     '&:hover': {
-                                        background: theme.palette.success.dark,
-                                        color: theme.palette.success.light
+                                        background: 'linear-gradient(60deg, #EC73FF, #2F5597, #3864B3)',
+                                        color: theme.palette.success.dark
                                     }
                                 }}
                                 color='inherit'
@@ -267,12 +273,12 @@ const CanvasHeader = ({ chatflow, handleSaveFlow, handleDeleteFlow, handleLoadFl
                                     ...theme.typography.commonAvatar,
                                     ...theme.typography.mediumAvatar,
                                     transition: 'all .2s ease-in-out',
-                                    background: theme.palette.error.light,
-                                    color: theme.palette.error.dark,
+                                    background: 'linear-gradient(60deg, #3864B3, #2F5597, #EC73FF)',
+                                    color: theme.palette.error.light,
                                     ml: 1,
                                     '&:hover': {
-                                        background: theme.palette.error.dark,
-                                        color: theme.palette.error.light
+                                        background: 'linear-gradient(60deg, #EC73FF, #2F5597, #3864B3)',
+                                        color: theme.palette.error.dark
                                     }
                                 }}
                                 color='inherit'
@@ -293,10 +299,10 @@ const CanvasHeader = ({ chatflow, handleSaveFlow, handleDeleteFlow, handleLoadFl
                                 ...theme.typography.commonAvatar,
                                 ...theme.typography.mediumAvatar,
                                 transition: 'all .2s ease-in-out',
-                                background: theme.palette.canvasHeader.deployLight,
+                                background: theme.palette.canvasHeader.saveLight,
                                 color: theme.palette.canvasHeader.deployDark,
                                 '&:hover': {
-                                    background: theme.palette.canvasHeader.deployDark,
+                                    background: theme.palette.canvasHeader.saveDark,
                                     color: theme.palette.canvasHeader.deployLight
                                 }
                             }}
@@ -307,7 +313,7 @@ const CanvasHeader = ({ chatflow, handleSaveFlow, handleDeleteFlow, handleLoadFl
                         </Avatar>
                     </ButtonBase>
                 )}
-                <ButtonBase title='Save Chatflow' sx={{ borderRadius: '50%', mr: 2 }}>
+                <ButtonBase title='Save Workspace' sx={{ borderRadius: '50%', mr: 2 }}>
                     <Avatar
                         variant='rounded'
                         sx={{
@@ -334,10 +340,10 @@ const CanvasHeader = ({ chatflow, handleSaveFlow, handleDeleteFlow, handleLoadFl
                             ...theme.typography.commonAvatar,
                             ...theme.typography.mediumAvatar,
                             transition: 'all .2s ease-in-out',
-                            background: theme.palette.canvasHeader.settingsLight,
+                            background: theme.palette.canvasHeader.saveLight,
                             color: theme.palette.canvasHeader.settingsDark,
                             '&:hover': {
-                                background: theme.palette.canvasHeader.settingsDark,
+                                background: theme.palette.canvasHeader.saveDark,
                                 color: theme.palette.canvasHeader.settingsLight
                             }
                         }}
@@ -358,7 +364,7 @@ const CanvasHeader = ({ chatflow, handleSaveFlow, handleDeleteFlow, handleLoadFl
             <SaveChatflowDialog
                 show={flowDialogOpen}
                 dialogProps={{
-                    title: `Save New Chatflow`,
+                    title: `Save New Workspace`,
                     confirmButtonName: 'Save',
                     cancelButtonName: 'Cancel'
                 }}

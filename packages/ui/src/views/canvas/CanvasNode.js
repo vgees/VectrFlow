@@ -22,14 +22,14 @@ import { flowContext } from 'store/context/ReactFlowContext'
 const CardWrapper = styled(MainCard)(({ theme }) => ({
     background: theme.palette.card.main,
     color: theme.darkTextPrimary,
-    border: 'solid 1px',
-    borderColor: theme.palette.primary[200] + 75,
+    border: 'solid 2.5px',
+    borderColor: '#2F5597', //theme.palette.primary[200] + 75,
     width: '300px',
     height: 'auto',
     padding: '10px',
     boxShadow: '0 2px 14px 0 rgb(32 40 45 / 8%)',
     '&:hover': {
-        borderColor: theme.palette.primary.main
+        borderColor: '#EC73FF' //theme.palette.card.main
     }
 }))
 
@@ -95,7 +95,7 @@ const CanvasNode = ({ data }) => {
                 content={false}
                 sx={{
                     padding: 0,
-                    borderColor: data.selected ? theme.palette.primary.main : theme.palette.text.secondary
+                    borderColor: data.selected ? '#EC73FF' : '#2F5597' //theme.palette.primary.main : theme.palette.text.secondary
                 }}
                 border={false}
             >

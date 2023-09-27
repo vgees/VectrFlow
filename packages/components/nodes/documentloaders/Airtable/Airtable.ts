@@ -1,3 +1,4 @@
+{/*
 import { ICommonObject, INode, INodeData, INodeParams } from '../../../src/Interface'
 import { TextSplitter } from 'langchain/text_splitter'
 import { BaseDocumentLoader } from 'langchain/document_loaders/base'
@@ -228,3 +229,4 @@ class AirtableLoader extends BaseDocumentLoader {
 module.exports = {
     nodeClass: Airtable_DocumentLoaders
 }
+*/}

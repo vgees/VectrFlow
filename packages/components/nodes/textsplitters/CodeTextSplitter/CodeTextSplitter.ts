@@ -21,7 +21,7 @@ class CodeTextSplitter_TextSplitters implements INode {
         this.name = 'codeTextSplitter'
         this.version = 1.0
         this.type = 'CodeTextSplitter'
-        this.icon = 'codeTextSplitter.svg'
+        this.icon = 'codeTextSplitter.png'
         this.category = 'Text Splitters'
         this.description = `Split documents based on language-specific syntax`
         this.baseClasses = [this.type, ...getBaseClasses(RecursiveCharacterTextSplitter)]

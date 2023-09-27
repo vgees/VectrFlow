@@ -103,11 +103,22 @@ const Chatflows = () => {
     return (
         <MainCard sx={{ background: customization.isDarkMode ? theme.palette.common.black : '' }}>
             <Stack flexDirection='row'>
-                <h1>Chatflows</h1>
+                <h1>Workspaces</h1>
                 <Grid sx={{ mb: 1.25 }} container direction='row'>
                     <Box sx={{ flexGrow: 1 }} />
                     <Grid item>
-                        <StyledButton variant='contained' sx={{ color: 'white' }} onClick={addNew} startIcon={<IconPlus />}>
+                        <StyledButton
+                            variant='contained'
+                            sx={{
+                                background: 'linear-gradient(60deg, #3864B3, #2F5597, #EC73FF)',
+                                color: 'white',
+                                '&:hover': {
+                                    background: 'linear-gradient(60deg, #EC73FF, #2F5597, #3864B3)'
+                                }
+                            }}
+                            onClick={addNew}
+                            startIcon={<IconPlus />}
+                        >
                             Add New
                         </StyledButton>
                     </Grid>
