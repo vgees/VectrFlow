@@ -6,18 +6,18 @@ Starts Flowise from [DockerHub Image](https://hub.docker.com/repository/docker/f
 
 1. Create `.env` file and specify the `PORT` (refer to `.env.example`)
 2. `docker-compose up -d`
-3. Open [http://localhost:3000](http://localhost:3000)
+3. Open [http://localhost:8080](http://localhost:8080)
 4. You can bring the containers down by `docker-compose stop`
 
 ## 🔒 Authentication
 
-1. Create `.env` file and specify the `PORT`, `FLOWISE_USERNAME`, and `FLOWISE_PASSWORD` (refer to `.env.example`)
-2. Pass `FLOWISE_USERNAME` and `FLOWISE_PASSWORD` to the `docker-compose.yml` file:
+1. Create `.env` file and specify the `PORT`, `Vectrflow_USERNAME`, and `Vectrflow_PASSWORD` (refer to `.env.example`)
+2. Pass `Vectrflow_USERNAME` and `Vectrflow_PASSWORD` to the `docker-compose.yml` file:
     ```
     environment:
         - PORT=${PORT}
-        - FLOWISE_USERNAME=${FLOWISE_USERNAME}
-        - FLOWISE_PASSWORD=${FLOWISE_PASSWORD}
+        - Vectrflow_USERNAME=${Vectrflow_USERNAME}
+        - Vectrflow_PASSWORD=${Vectrflow_PASSWORD}
     ```
 3. `docker-compose up -d`
 4. Open [http://localhost:3000](http://localhost:3000)
@@ -32,4 +32,4 @@ If you like to persist your data (flows, logs, apikeys, credentials), set these 
 -   LOG_PATH=/root/.flowise/logs
 -   SECRETKEY_PATH=/root/.flowise
 
-Flowise also support different environment variables to configure your instance. Read [more](https://docs.flowiseai.com/environment-variables)
+
