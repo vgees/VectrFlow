@@ -17,9 +17,12 @@ import Settings from 'views/settings'
 import SaveChatflowDialog from 'ui-component/dialog/SaveChatflowDialog'
 import APICodeDialog from 'views/chatflows/APICodeDialog'
 import AnalyseFlowDialog from 'ui-component/dialog/AnalyseFlowDialog'
+import Compiler from 'views/canvas/compiler'
 
 // API
 import chatflowsApi from 'api/chatflows'
+import chatmessageApi from 'api/chatmessage'
+import predictionApi from 'api/prediction'
 
 // Hooks
 import useApi from 'hooks/useApi'
@@ -141,9 +144,10 @@ const CanvasHeader = ({ chatflow, handleSaveFlow, handleDeleteFlow, handleLoadFl
         setAPIDialogOpen(true)
     }
 
-    const onSaveChatflowClick = () => {
-        if (chatflow.id) handleSaveFlow(flowName)
-        else setFlowDialogOpen(true)
+    const onSaveChatflowClick = async (e) => {
+        if (chatflow.id) {
+            handleSubmit(e)
+        }
     }
 
     const onConfirmSaveName = (flowName) => {
