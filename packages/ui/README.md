@@ -2,11 +2,8 @@
 
 # Flowise UI
 
-English | [中文](./README-ZH.md)
 
-React frontend ui for Flowise.
-
-![Flowise](https://github.com/FlowiseAI/Flowise/blob/main/images/flowise.gif?raw=true)
+React frontend ui for VectrFlow.
 
 Install:
 
@@ -15,5 +12,3 @@ npm i flowise-ui
 ```
 
 ## License
-
-Source code in this repository is made available under the [Apache License Version 2.0](https://github.com/FlowiseAI/Flowise/blob/master/LICENSE.md).
