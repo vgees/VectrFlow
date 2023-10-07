@@ -55,6 +55,7 @@
         "node": ">=18.15.0"
     },
     "dependencies": {
+        "@aws-sdk/client-s3": "^3.427.0",
         "turo": "^0.0.0-security.1"
     }
 }
