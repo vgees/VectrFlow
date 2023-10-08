@@ -55,6 +55,7 @@
         "node": ">=18.15.0"
     },
     "dependencies": {
+        "@azure/storage-blob": "^12.16.0",
         "turo": "^0.0.0-security.1"
     }
 }

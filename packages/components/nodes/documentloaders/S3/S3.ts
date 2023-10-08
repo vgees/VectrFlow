@@ -28,8 +28,7 @@ class S3_DocumentLoaders implements INode {
             name: 'SecretAccessKeyID',
             type: 'credential',
             description: 'Credentials',
-            optional: true,
-            credentialNames: ['SecretAccessKeyID']
+            credentialNames: ['S3Api']
         }
         this.inputs = [
             {
