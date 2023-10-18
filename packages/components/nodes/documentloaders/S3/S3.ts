@@ -1,5 +1,6 @@
 import { ICommonObject, INode, INodeData, INodeParams } from '../../../src/Interface'
 import { S3Loader } from 'langchain/document_loaders/web/s3'
+import { TextSplitter } from 'langchain/text_splitter'
 import { getCredentialData, getCredentialParam } from '../../../src/utils'
 
 class S3_DocumentLoaders implements INode {
@@ -23,13 +24,6 @@ class S3_DocumentLoaders implements INode {
         this.category = 'Document Loaders'
         this.description = 'Load Data from S3 Buckets'
         this.baseClasses = [this.type]
-        this.credential = {
-            label: 'Secret Access Key',
-            name: 'SecretAccessKeyID',
-            type: 'credential',
-            description: 'Credentials',
-            credentialNames: ['S3Api']
-        }
         this.inputs = [
             {
                 label: 'Bucket',
@@ -37,7 +31,7 @@ class S3_DocumentLoaders implements INode {
                 type: 'string'
             },
             {
-                label: 'Key',
+                label: 'File Name',
                 name: 'FileName',
                 type: 'string',
                 description: 'Mention the file name along with the type'
@@ -48,40 +42,121 @@ class S3_DocumentLoaders implements INode {
                 type: 'string'
             },
             {
-                label: 'Unstructured API URL',
-                name: 'UnstructuredAPIurl',
-                type: 'string'
-            },
-            {
                 label: 'Access Key',
                 name: 'AccessKey',
-                type: 'string'
+                type: 'password'
+            },
+            {
+                label: 'Secret access Key',
+                name: 'SecretAccessKeyID',
+                type: 'password'
+            }, 
+            {
+                label: 'Text Splitter',
+                name: 'textSplitter',
+                type: 'TextSplitter',
+                optional: true
+            },
+            {
+                label: 'NarrativeText Only',
+                name: 'narrativeTextOnly',
+                description:
+                    'Only load documents with NarrativeText metadata from Unstructured',
+                type: 'boolean',
+                optional: true,
+                additionalParams: true
+            },
+            {
+                label: 'Metadata',
+                name: 'metadata1',
+                type: 'json',
+                optional: true,
+                additionalParams: true
             }
         ]
     }
+
     async init(nodeData: INodeData, _: string, options: ICommonObject): Promise<any> {
-        const bucket1 = nodeData.inputs?.BucketName as string
-        const file_name = nodeData.inputs?.FileName as string
-        const region1 = nodeData.inputs?.Region as string
-        const unApiURL = nodeData.inputs?.UnstructuredAPIurl as string
-        const credentialData = await getCredentialData(nodeData.credential ?? '', options)
-        const AccessKeyID1 = nodeData.inputs?.AccessKey as string
-        const SecretAccessKeyID1 = getCredentialParam('SecretAccessKeyID', credentialData, nodeData)
-        const loader = new S3Loader({
-            bucket: bucket1,
-            key: file_name,
-            s3Config: {
-                region: region1,
-                credentials: {
-                    accessKeyId: AccessKeyID1,
-                    secretAccessKey: SecretAccessKeyID1
-                }
-            },
-            unstructuredAPIURL: unApiURL,
-            unstructuredAPIKey: ''
-        })
-        const docs = await loader.load()
-        console.log(docs)
+        try {
+            const bucket1 = nodeData.inputs?.BucketName as string;
+            const file_name = nodeData.inputs?.FileName as string;
+            const region1 = nodeData.inputs?.Region as string;
+            const AccessKeyID1 = nodeData.inputs?.AccessKey as string;
+            const SecretAccessKeyID1 = nodeData.inputs?.SecretAccessKeyID as string;
+            const textSplitter = nodeData.inputs?.textSplitter as TextSplitter;
+            const metadata = nodeData.inputs?.metadata1;
+            const narrativeTextOnly = nodeData.inputs?.narrativeTextOnly as boolean
+            if (bucket1 && file_name && region1 && AccessKeyID1 && SecretAccessKeyID1) {
+                const loader = new S3Loader({
+                    bucket: bucket1,
+                    key:file_name,
+                    s3Config: {
+                        region: region1,
+                        credentials: {
+                            accessKeyId: AccessKeyID1,
+                            secretAccessKey: SecretAccessKeyID1
+                        }
+                    },
+                    unstructuredAPIURL: 'https://api.unstructured.io/general/v0/general',
+                    unstructuredAPIKey: 'LnV3sMnJnBjk4heCxBZLxupWLcSNLu'
+                });
+                if (textSplitter) {
+                    try{
+                        const docs = await loader.loadAndSplit(textSplitter)
+                        if (metadata) {
+                            const parsedMetadata = typeof metadata === 'object' ? metadata : JSON.parse(metadata)
+                            const finaldocs = docs.map((doc) => {
+                                return {
+                                    ...doc,
+                                    metadata: {
+                                        ...doc.metadata,
+                                        ...parsedMetadata
+                                    }
+                                } 
+                            })
+                            return narrativeTextOnly ? finaldocs.filter((doc) => doc.metadata.category === 'NarrativeText') : finaldocs
+                        }
+                        return narrativeTextOnly ? docs.filter((doc) => doc.metadata.category === 'NarrativeText') : docs
+                    }
+                    catch(e:any){
+                        throw new Error(`${e}`)
+                    }
+                        
+
+                        }
+                else{
+                    try{
+                        const docs = await loader.load();
+                        if (metadata) {
+                            const parsedMetadata = typeof metadata === 'object' ? metadata : JSON.parse(metadata)
+                            const finaldocs = docs.map((doc) => {
+                                return {
+                                    ...doc,
+                                    metadata: {
+                                        ...doc.metadata,
+                                        ...parsedMetadata
+                                    }
+                                }
+                            })
+                            return narrativeTextOnly ? finaldocs.filter((doc) => doc.metadata.category === 'NarrativeText') : finaldocs
+                        }
+                        return narrativeTextOnly ? docs.filter((doc) => doc.metadata.category === 'NarrativeText') : docs
+                    }
+                    catch(e:any){
+                        throw new Error(`${e}`)
+                    }
+            }
+            } else {
+                console.error('Some required properties are undefined.')
+            }
+            
+        
+        } catch (error) {
+            console.error('An error occurred:', error)
+            throw error; 
+            
+        }
+        
     }
 }
 module.exports = { nodeClass: S3_DocumentLoaders }
