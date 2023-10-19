@@ -1,6 +1,7 @@
+import { load } from 'js-yaml'
 import { ICommonObject, INode, INodeData, INodeParams } from '../../../src/Interface'
 import { AzureBlobStorageFileLoader } from 'langchain/document_loaders/web/azure_blob_storage_file'
-
+import { TextSplitter } from 'langchain/text_splitter'
 class AzureBlobStorage_DocumentLoaders implements INode {
     label: string
     name: string
@@ -34,14 +35,32 @@ class AzureBlobStorage_DocumentLoaders implements INode {
                 type: 'string'
             },
             {
-                label: 'Blob Name',
+                label: 'File Name',
                 name: 'BlobName',
-                type: 'string'
+                type: 'string',
+                description: 'Mention the file name along with the type'
             },
             {
-                label: 'Unstructured API URL',
-                name: 'UnstructuredAPIurl',
-                type: 'string'
+                label: 'Text Splitter',
+                name: 'textSplitter',
+                type: 'TextSplitter',
+                optional: true
+            },
+            {
+                label: 'NarrativeText Only',
+                name: 'narrativeTextOnly',
+                description:
+                    'Only load documents with NarrativeText metadata from Unstructured',
+                type: 'boolean',
+                optional: true,
+                additionalParams: true
+            },
+            {
+                label: 'Metadata',
+                name: 'metadata1',
+                type: 'json',
+                optional: true,
+                additionalParams: true
             }
         ]
     }
@@ -49,20 +68,77 @@ class AzureBlobStorage_DocumentLoaders implements INode {
         const constring = nodeData.inputs?.ConnectionString as string
         const contname = nodeData.inputs?.ContainerName as string
         const Blobname1 = nodeData.inputs?.BlobName as string
-        const unApiURL = nodeData.inputs?.UnstructuredAPIurl as string
-        const loader = new AzureBlobStorageFileLoader({
-            azureConfig: {
-                connectionString: constring,
-                container: contname,
-                blobName: Blobname1
-            },
-            unstructuredConfig: {
-                apiUrl: unApiURL,
-                apiKey: '' // this will be soon required
+        const textSplitter = nodeData.inputs?.textSplitter as TextSplitter;
+        const metadata = nodeData.inputs?.metadata1;
+        const narrativeTextOnly = nodeData.inputs?.narrativeTextOnly as boolean
+        try{
+            if (constring && contname && Blobname1){
+                const loader = new AzureBlobStorageFileLoader({
+                    azureConfig: {
+                        connectionString: constring,
+                        container: contname,
+                        blobName: Blobname1
+                    },
+                    unstructuredConfig: {
+                        apiUrl: 'https://api.unstructured.io/general/v0/general',
+                        apiKey: 'LnV3sMnJnBjk4heCxBZLxupWLcSNLu'
+                    }
+                })
+                if (textSplitter) {
+                    try{
+                        const docs = await loader.loadAndSplit(textSplitter)
+                        if (metadata) {
+                            const parsedMetadata = typeof metadata === 'object' ? metadata : JSON.parse(metadata)
+                            const finaldocs = docs.map((doc) => {
+                                return {
+                                    ...doc,
+                                    metadata: {
+                                        ...doc.metadata,
+                                        ...parsedMetadata
+                                    }
+                                } 
+                            })
+                            return narrativeTextOnly ? finaldocs.filter((doc) => doc.metadata.category === 'NarrativeText') : finaldocs
+                        }
+                        return narrativeTextOnly ? docs.filter((doc) => doc.metadata.category === 'NarrativeText') : docs
+                    }
+                    catch(e:any){
+                        throw new Error(`${e}`)
+                    }
+                        
+        
+                        }
+                else{
+                    try{
+                        const docs = await loader.load();
+                        if (metadata) {
+                            const parsedMetadata = typeof metadata === 'object' ? metadata : JSON.parse(metadata)
+                            const finaldocs = docs.map((doc) => {
+                                return {
+                                    ...doc,
+                                    metadata: {
+                                        ...doc.metadata,
+                                        ...parsedMetadata
+                                    }
+                                }
+                            })
+                            return narrativeTextOnly ? finaldocs.filter((doc) => doc.metadata.category === 'NarrativeText') : finaldocs
+                        }
+                        return narrativeTextOnly ? docs.filter((doc) => doc.metadata.category === 'NarrativeText') : docs
+                    }
+                    catch(e:any){
+                        throw new Error(`${e}`)
+                    }
+                }
+            } else {
+                console.error('Some required properties are undefined.')
             }
-        })
-        const docs = await loader.load()
-        console.log(docs)
+        }
+        catch (error) {
+            console.error('An error occurred:', error)
+            throw error; 
+            
+        }
     }
 }
 module.exports = { nodeClass: AzureBlobStorage_DocumentLoaders }
