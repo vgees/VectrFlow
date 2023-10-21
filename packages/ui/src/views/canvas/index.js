@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback, useContext } from 'react'
 import ReactFlow, { addEdge, Controls, Background, useNodesState, useEdgesState } from 'reactflow'
 import 'reactflow/dist/style.css'
+import LoadingBar from 'react-top-loading-bar'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -68,7 +69,7 @@ const Canvas = () => {
     const canvas = useSelector((state) => state.canvas)
     const [canvasDataStore, setCanvasDataStore] = useState(canvas)
     const [chatflow, setChatflow] = useState(null)
-
+    const ref = useRef(null)
     const { reactFlowInstance, setReactFlowInstance } = useContext(flowContext)
 
     // ==============================|| Snackbar ||============================== //
@@ -198,6 +199,7 @@ const Canvas = () => {
     }
     const runsaveflow = async (chatflowname) => {
         compiling()
+        ref.current.continuousStart()
         try {
             let userinp = 'hi'
             const params = {
@@ -207,8 +209,10 @@ const Canvas = () => {
             if (isChatFlowAvailableToStream) params.socketIOClientId = socketIOClientId
             const response = await predictionApi.sendMessageAndGetPrediction(chatflow.id, params)
             runChatflowSuccess()
+            ref.current.complete()
         } catch (error) {
             const errorData = error.response.data || `${error.response.status}: ${error.response.statusText} \n`
+            ref.current.complete()
             errorFailed(`Failed to compile chatflow: ${errorData}`)
             return
         }
@@ -530,6 +534,7 @@ const Canvas = () => {
 
     return (
         <>
+            <LoadingBar color='#5D3FD3' ref={ref} shadow={true} />
             <Box>
                 <AppBar
                     enableColorOnDark
