@@ -10,7 +10,16 @@ import { useTheme } from '@mui/material/styles'
 import { Avatar, Box, ButtonBase, Typography, Stack, TextField } from '@mui/material'
 
 // icons
-import { IconSettings, IconChevronLeft, IconDeviceFloppy, IconPencil, IconCheck, IconX, IconCode } from '@tabler/icons'
+import {
+    IconSettings,
+    IconChevronLeft,
+    IconDeviceFloppy,
+    IconPencil,
+    IconCheck,
+    IconX,
+    IconCode,
+    IconArrowAutofitRight
+} from '@tabler/icons'
 
 // project imports
 import Settings from 'views/settings'
@@ -31,7 +40,7 @@ import { SET_CHATFLOW } from 'store/actions'
 
 // ==============================|| CANVAS HEADER ||============================== //
 
-const CanvasHeader = ({ chatflow, handleSaveFlow, handleDeleteFlow, handleLoadFlow }) => {
+const CanvasHeader = ({ chatflow, handleSaveFlow, handleDeleteFlow, handleLoadFlow, runsaveflow }) => {
     const theme = useTheme()
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -143,6 +152,11 @@ const CanvasHeader = ({ chatflow, handleSaveFlow, handleDeleteFlow, handleLoadFl
 
     const onSaveChatflowClick = () => {
         if (chatflow.id) handleSaveFlow(flowName)
+        else setFlowDialogOpen(true)
+    }
+
+    const onRunChatflowClick = () => {
+        if (chatflow.id) runsaveflow(flowName)
         else setFlowDialogOpen(true)
     }
 
@@ -291,6 +305,46 @@ const CanvasHeader = ({ chatflow, handleSaveFlow, handleDeleteFlow, handleLoadFl
                 )}
             </Box>
             <Box>
+                <ButtonBase title='Save Workspace' sx={{ borderRadius: '50%', mr: 2 }}>
+                    <Avatar
+                        variant='rounded'
+                        sx={{
+                            ...theme.typography.commonAvatar,
+                            ...theme.typography.mediumAvatar,
+                            transition: 'all .2s ease-in-out',
+                            background: theme.palette.canvasHeader.saveLight,
+                            color: theme.palette.canvasHeader.saveDark,
+                            '&:hover': {
+                                background: theme.palette.canvasHeader.saveDark,
+                                color: theme.palette.canvasHeader.saveLight
+                            }
+                        }}
+                        color='inherit'
+                        onClick={onSaveChatflowClick}
+                    >
+                        <IconDeviceFloppy stroke={1.5} size='1.3rem' />
+                    </Avatar>
+                </ButtonBase>
+                <ButtonBase title='Run' sx={{ borderRadius: '50%', mr: 2 }}>
+                    <Avatar
+                        variant='rounded'
+                        sx={{
+                            ...theme.typography.commonAvatar,
+                            ...theme.typography.mediumAvatar,
+                            transition: 'all .2s ease-in-out',
+                            background: theme.palette.canvasHeader.saveLight,
+                            color: theme.palette.canvasHeader.saveDark,
+                            '&:hover': {
+                                background: theme.palette.canvasHeader.saveDark,
+                                color: theme.palette.canvasHeader.saveLight
+                            }
+                        }}
+                        color='inherit'
+                        onClick={onRunChatflowClick}
+                    >
+                        <IconArrowAutofitRight stroke={1.5} size='1.3rem' />
+                    </Avatar>
+                </ButtonBase>
                 {chatflow?.id && (
                     <ButtonBase title='API Endpoint' sx={{ borderRadius: '50%', mr: 2 }}>
                         <Avatar
@@ -313,26 +367,6 @@ const CanvasHeader = ({ chatflow, handleSaveFlow, handleDeleteFlow, handleLoadFl
                         </Avatar>
                     </ButtonBase>
                 )}
-                <ButtonBase title='Save Workspace' sx={{ borderRadius: '50%', mr: 2 }}>
-                    <Avatar
-                        variant='rounded'
-                        sx={{
-                            ...theme.typography.commonAvatar,
-                            ...theme.typography.mediumAvatar,
-                            transition: 'all .2s ease-in-out',
-                            background: theme.palette.canvasHeader.saveLight,
-                            color: theme.palette.canvasHeader.saveDark,
-                            '&:hover': {
-                                background: theme.palette.canvasHeader.saveDark,
-                                color: theme.palette.canvasHeader.saveLight
-                            }
-                        }}
-                        color='inherit'
-                        onClick={onSaveChatflowClick}
-                    >
-                        <IconDeviceFloppy stroke={1.5} size='1.3rem' />
-                    </Avatar>
-                </ButtonBase>
                 <ButtonBase ref={settingsRef} title='Settings' sx={{ borderRadius: '50%' }}>
                     <Avatar
                         variant='rounded'
@@ -381,7 +415,8 @@ CanvasHeader.propTypes = {
     chatflow: PropTypes.object,
     handleSaveFlow: PropTypes.func,
     handleDeleteFlow: PropTypes.func,
-    handleLoadFlow: PropTypes.func
+    handleLoadFlow: PropTypes.func,
+    runsaveflow: PropTypes.func
 }
 
 export default CanvasHeader

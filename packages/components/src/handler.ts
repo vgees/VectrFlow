@@ -235,8 +235,8 @@ export const additionalCallbacks = async (nodeData: INodeData, options: ICommonO
                     if (requestTimeout) langFuseOptions.requestTimeout = parseInt(requestTimeout, 10)
                     if (release) langFuseOptions.release = release
 
-                    const handler = new CallbackHandler(langFuseOptions)
-                    callbacks.push(handler)
+                    //const handler = new CallbackHandler(langFuseOptions)
+                    //callbacks.push(handler)
                 }
             }
         }

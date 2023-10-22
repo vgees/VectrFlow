@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, useCallback, useContext } from 'react'
 import ReactFlow, { addEdge, Controls, Background, useNodesState, useEdgesState } from 'reactflow'
 import 'reactflow/dist/style.css'
+import LoadingBar from 'react-top-loading-bar'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useLocation } from 'react-router-dom'
@@ -30,6 +31,8 @@ import { flowContext } from 'store/context/ReactFlowContext'
 // API
 import nodesApi from 'api/nodes'
 import chatflowsApi from 'api/chatflows'
+import chatmessageApi from 'api/chatmessage'
+import predictionApi from 'api/prediction'
 
 // Hooks
 import useApi from 'hooks/useApi'
@@ -66,7 +69,7 @@ const Canvas = () => {
     const canvas = useSelector((state) => state.canvas)
     const [canvasDataStore, setCanvasDataStore] = useState(canvas)
     const [chatflow, setChatflow] = useState(null)
-
+    const ref = useRef(null)
     const { reactFlowInstance, setReactFlowInstance } = useContext(flowContext)
 
     // ==============================|| Snackbar ||============================== //
@@ -91,6 +94,14 @@ const Canvas = () => {
     const testChatflowApi = useApi(chatflowsApi.testChatflow)
     const updateChatflowApi = useApi(chatflowsApi.updateChatflow)
     const getSpecificChatflowApi = useApi(chatflowsApi.getSpecificChatflow)
+    const [messages, setMessages] = useState([
+        {
+            message: 'Hi there! How can I help?',
+            type: 'apiMessage'
+        }
+    ])
+    const [socketIOClientId, setSocketIOClientId] = useState('')
+    const [isChatFlowAvailableToStream, setIsChatFlowAvailableToStream] = useState(false)
 
     // ==============================|| Events & Actions ||============================== //
 
@@ -186,7 +197,26 @@ const Canvas = () => {
             }
         }
     }
-
+    const runsaveflow = async (chatflowname) => {
+        compiling()
+        ref.current.continuousStart()
+        try {
+            let userinp = 'hi'
+            const params = {
+                question: userinp,
+                history: messages.filter((msg) => msg.message !== 'Hi there! How can I help?')
+            }
+            if (isChatFlowAvailableToStream) params.socketIOClientId = socketIOClientId
+            const response = await predictionApi.sendMessageAndGetPrediction(chatflow.id, params)
+            runChatflowSuccess()
+            ref.current.complete()
+        } catch (error) {
+            const errorData = error.response.data || `${error.response.status}: ${error.response.statusText} \n`
+            ref.current.complete()
+            errorFailed(`Failed to compile chatflow: ${errorData}`)
+            return
+        }
+    }
     const handleSaveFlow = (chatflowName) => {
         if (reactFlowInstance) {
             const nodes = reactFlowInstance.getNodes().map((node) => {
@@ -223,7 +253,6 @@ const Canvas = () => {
             }
         }
     }
-
     // eslint-disable-next-line
     const onNodeClick = useCallback((event, clickedNode) => {
         setSelectedNode(clickedNode)
@@ -310,6 +339,36 @@ const Canvas = () => {
             options: {
                 key: new Date().getTime() + Math.random(),
                 variant: 'success',
+                action: (key) => (
+                    <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
+                        <IconX />
+                    </Button>
+                )
+            }
+        })
+    }
+    const runChatflowSuccess = () => {
+        dispatch({ type: REMOVE_DIRTY })
+        enqueueSnackbar({
+            message: 'Chatflow compiled successfully',
+            options: {
+                key: new Date().getTime() + Math.random(),
+                variant: 'success',
+                action: (key) => (
+                    <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
+                        <IconX />
+                    </Button>
+                )
+            }
+        })
+    }
+    const compiling = () => {
+        dispatch({ type: REMOVE_DIRTY })
+        enqueueSnackbar({
+            message: 'Compiling...',
+            options: {
+                key: new Date().getTime() + Math.random(),
+                variant: 'warning',
                 action: (key) => (
                     <Button style={{ color: 'white' }} onClick={() => closeSnackbar(key)}>
                         <IconX />
@@ -475,6 +534,7 @@ const Canvas = () => {
 
     return (
         <>
+            <LoadingBar color='#5D3FD3' ref={ref} shadow={true} />
             <Box>
                 <AppBar
                     enableColorOnDark
@@ -491,6 +551,7 @@ const Canvas = () => {
                             handleSaveFlow={handleSaveFlow}
                             handleDeleteFlow={handleDeleteFlow}
                             handleLoadFlow={handleLoadFlow}
+                            runsaveflow={runsaveflow}
                         />
                     </Toolbar>
                 </AppBar>

@@ -13,11 +13,11 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     color: theme.darkTextPrimary,
     overflow: 'auto',
     position: 'relative',
-    boxShadow: '0 2px 14px 0 rgb(32 40 45 / 8%)',
+    boxShadow: '0 2px 14px 0 rgb(32 40 45 / 10%)',
     cursor: 'pointer',
     '&:hover': {
         background: theme.palette.card.hover,
-        boxShadow: '0 2px 14px 0 rgb(32 40 45 / 20%)'
+        boxShadow: '0 2px 14px 0 rgb(32 40 45 / 100%)'
     },
     maxHeight: '300px',
     maxWidth: '300px',
@@ -69,7 +69,7 @@ const ItemCard = ({ isLoading, data, images, onClick }) => {
                                     ></div>
                                 )}
                                 <Typography
-                                    sx={{ fontSize: '1.5rem', fontWeight: 500, overflowWrap: 'break-word', whiteSpace: 'pre-line' }}
+                                    sx={{ fontSize: '1.0rem', fontWeight: 500, overflowWrap: 'break-word', whiteSpace: 'pre-line' }}
                                 >
                                     {data.templateName || data.name}
                                 </Typography>
