@@ -183,7 +183,7 @@ export class CustomChainHandler extends BaseCallbackHandler {
         }
     }
 }
-/*
+
 export const additionalCallbacks = async (nodeData: INodeData, options: ICommonObject) => {
     try {
         if (!options.analytic) return []
@@ -243,5 +243,5 @@ export const additionalCallbacks = async (nodeData: INodeData, options: ICommonO
         return callbacks
     } catch (e) {
         throw new Error(e)
-    }*/
+    }
 }
