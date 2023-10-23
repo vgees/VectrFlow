@@ -1,5 +1,5 @@
 {
-    "description": "Flowise Docs Github QnA using conversational retrieval QA chain",
+    "description": "VectrFlow Docs Github QnA using conversational retrieval QA chain",
     "nodes": [
         {
             "width": 300,
