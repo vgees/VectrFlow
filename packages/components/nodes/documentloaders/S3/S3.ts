@@ -78,13 +78,13 @@ class S3_DocumentLoaders implements INode {
 
     async init(nodeData: INodeData, _: string, options: ICommonObject): Promise<any> {
         try {
-            const bucket1 = nodeData.inputs?.BucketName as string;
-            const file_name = nodeData.inputs?.FileName as string;
-            const region1 = nodeData.inputs?.Region as string;
-            const AccessKeyID1 = nodeData.inputs?.AccessKey as string;
-            const SecretAccessKeyID1 = nodeData.inputs?.SecretAccessKeyID as string;
-            const textSplitter = nodeData.inputs?.textSplitter as TextSplitter;
-            const metadata = nodeData.inputs?.metadata1;
+            const bucket1 = nodeData.inputs?.BucketName as string
+            const file_name = nodeData.inputs?.FileName as string
+            const region1 = nodeData.inputs?.Region as string
+            const AccessKeyID1 = nodeData.inputs?.AccessKey as string
+            const SecretAccessKeyID1 = nodeData.inputs?.SecretAccessKeyID as string
+            const textSplitter = nodeData.inputs?.textSplitter as TextSplitter
+            const metadata = nodeData.inputs?.metadata1
             const narrativeTextOnly = nodeData.inputs?.narrativeTextOnly as boolean
             if (bucket1 && file_name && region1 && AccessKeyID1 && SecretAccessKeyID1) {
                 const loader = new S3Loader({
@@ -99,7 +99,7 @@ class S3_DocumentLoaders implements INode {
                     },
                     unstructuredAPIURL: 'https://api.unstructured.io/general/v0/general',
                     unstructuredAPIKey: 'LnV3sMnJnBjk4heCxBZLxupWLcSNLu'
-                });
+                })
                 if (textSplitter) {
                     try{
                         const docs = await loader.loadAndSplit(textSplitter)
@@ -126,7 +126,7 @@ class S3_DocumentLoaders implements INode {
                         }
                 else{
                     try{
-                        const docs = await loader.load();
+                        const docs = await loader.load()
                         if (metadata) {
                             const parsedMetadata = typeof metadata === 'object' ? metadata : JSON.parse(metadata)
                             const finaldocs = docs.map((doc) => {
@@ -153,7 +153,7 @@ class S3_DocumentLoaders implements INode {
         
         } catch (error) {
             console.error('An error occurred:', error)
-            throw error; 
+            throw error
             
         }
         

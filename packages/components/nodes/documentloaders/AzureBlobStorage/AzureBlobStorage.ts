@@ -68,8 +68,8 @@ class AzureBlobStorage_DocumentLoaders implements INode {
         const constring = nodeData.inputs?.ConnectionString as string
         const contname = nodeData.inputs?.ContainerName as string
         const Blobname1 = nodeData.inputs?.BlobName as string
-        const textSplitter = nodeData.inputs?.textSplitter as TextSplitter;
-        const metadata = nodeData.inputs?.metadata1;
+        const textSplitter = nodeData.inputs?.textSplitter as TextSplitter
+        const metadata = nodeData.inputs?.metadata1
         const narrativeTextOnly = nodeData.inputs?.narrativeTextOnly as boolean
         try{
             if (constring && contname && Blobname1){
@@ -110,7 +110,7 @@ class AzureBlobStorage_DocumentLoaders implements INode {
                         }
                 else{
                     try{
-                        const docs = await loader.load();
+                        const docs = await loader.load()
                         if (metadata) {
                             const parsedMetadata = typeof metadata === 'object' ? metadata : JSON.parse(metadata)
                             const finaldocs = docs.map((doc) => {
@@ -136,7 +136,7 @@ class AzureBlobStorage_DocumentLoaders implements INode {
         }
         catch (error) {
             console.error('An error occurred:', error)
-            throw error; 
+            throw error
             
         }
     }
