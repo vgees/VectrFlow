@@ -213,7 +213,7 @@ export const additionalCallbacks = async (nodeData: INodeData, options: ICommonO
                         client
                     })
                     callbacks.push(tracer)
-                } else if (provider === 'langFuse') {
+                } /*else if (provider === 'langFuse') {
                     const credentialId = analytic[provider].credentialId as string
                     const flushAt = analytic[provider].flushAt as string
                     const flushInterval = analytic[provider].flushInterval as string
@@ -237,7 +237,7 @@ export const additionalCallbacks = async (nodeData: INodeData, options: ICommonO
 
                     const handler = new CallbackHandler(langFuseOptions)
                     callbacks.push(handler)
-                }
+                }*/
             }
         }
         return callbacks
