@@ -49,8 +49,7 @@ class AzureBlobStorage_DocumentLoaders implements INode {
             {
                 label: 'NarrativeText Only',
                 name: 'narrativeTextOnly',
-                description:
-                    'Only load documents with NarrativeText metadata from Unstructured',
+                description:'Only load documents with NarrativeText metadata from Unstructured',
                 type: 'boolean',
                 optional: true,
                 additionalParams: true
@@ -71,8 +70,8 @@ class AzureBlobStorage_DocumentLoaders implements INode {
         const textSplitter = nodeData.inputs?.textSplitter as TextSplitter
         const metadata = nodeData.inputs?.metadata1
         const narrativeTextOnly = nodeData.inputs?.narrativeTextOnly as boolean
-        try{
-            if (constring && contname && Blobname1){
+        try {
+            if (constring && contname && Blobname1) {
                 const loader = new AzureBlobStorageFileLoader({
                     azureConfig: {
                         connectionString: constring,
@@ -85,7 +84,7 @@ class AzureBlobStorage_DocumentLoaders implements INode {
                     }
                 })
                 if (textSplitter) {
-                    try{
+                    try {
                         const docs = await loader.loadAndSplit(textSplitter)
                         if (metadata) {
                             const parsedMetadata = typeof metadata === 'object' ? metadata : JSON.parse(metadata)
@@ -95,21 +94,20 @@ class AzureBlobStorage_DocumentLoaders implements INode {
                                     metadata: {
                                         ...doc.metadata,
                                         ...parsedMetadata
-                                    }
+                                     }
                                 } 
                             })
                             return narrativeTextOnly ? finaldocs.filter((doc) => doc.metadata.category === 'NarrativeText') : finaldocs
                         }
                         return narrativeTextOnly ? docs.filter((doc) => doc.metadata.category === 'NarrativeText') : docs
-                    }
-                    catch(e:any){
+                    } catch(e:any){
                         throw new Error(`${e}`)
                     }
                         
         
                         }
                 else{
-                    try{
+                    try {
                         const docs = await loader.load()
                         if (metadata) {
                             const parsedMetadata = typeof metadata === 'object' ? metadata : JSON.parse(metadata)
@@ -125,8 +123,7 @@ class AzureBlobStorage_DocumentLoaders implements INode {
                             return narrativeTextOnly ? finaldocs.filter((doc) => doc.metadata.category === 'NarrativeText') : finaldocs
                         }
                         return narrativeTextOnly ? docs.filter((doc) => doc.metadata.category === 'NarrativeText') : docs
-                    }
-                    catch(e:any){
+                    } catch(e:any){
                         throw new Error(`${e}`)
                     }
                 }
@@ -134,10 +131,8 @@ class AzureBlobStorage_DocumentLoaders implements INode {
                 console.error('Some required properties are undefined.')
             }
         }
-        catch (error) {
-            console.error('An error occurred:', error)
+        catch (error) { console.error('An error occurred:', error)
             throw error
-            
         }
     }
 }

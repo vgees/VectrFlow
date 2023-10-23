@@ -1,4 +1,4 @@
-{/*
+/*
 import { ICommonObject, INode, INodeData, INodeParams } from '../../../src/Interface'
 import { TextSplitter } from 'langchain/text_splitter'
 import { BaseDocumentLoader } from 'langchain/document_loaders/base'
@@ -228,5 +228,16 @@ class AirtableLoader extends BaseDocumentLoader {
 
 module.exports = {
     nodeClass: Airtable_DocumentLoaders
+class Airtable_DocumentLoaders extends DocumentLoader {
+    public async load(): Promise<Document[]> {
+        const airtableLoader = new AirtableLoader({
+            baseId: this.getParameter('baseId'),
+            tableId: this.getParameter('tableId'),
+            accessToken: this.getParameter('accessToken'),
+            limit: this.getParameter('limit'),
+            returnAll: this.getParameter('returnAll')
+        })
+        return airtableLoader.load()
+    }
 }
-*/}
+*/
