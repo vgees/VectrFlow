@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         platform: [ubuntu-latest]
-        node-version: [14]  # Specify a valid Node.js version here
+        node-version: [18]  # Specify a valid Node.js version here
     runs-on: ${{ matrix.platform }}
     env:
       PUPPETEER_SKIP_DOWNLOAD: false  # Remove this line if you want to download Chromium
