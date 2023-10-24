@@ -21,6 +21,7 @@ jobs:
     runs-on: ${{ matrix.platform }}
     env:
       PUPPETEER_SKIP_DOWNLOAD: true
+      process.env.CI: false
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
