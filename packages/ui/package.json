@@ -52,7 +52,7 @@
     "scripts": {
         "start": "craco start",
         "dev": "craco start",
-        "build": "process.env.CI = false && craco build",
+        "build": "craco build",
         "test": "craco test",
         "eject": "craco eject"
     },
