@@ -20,7 +20,7 @@ jobs:
     runs-on: ${{ matrix.platform }}
     env:
       PUPPETEER_SKIP_DOWNLOAD: false  # Remove this line if you want to download Chromium
-      process.ci.env: false
+      process.env.CI: false
 
     steps:
       - name: Checkout code
