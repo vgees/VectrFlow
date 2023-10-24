@@ -33,5 +33,4 @@ module.exports = {
         jest: true,
         'process.env.CI': false  // Set process.env.CI to false
     }
-    
-}
+};
