@@ -1,7 +1,6 @@
 import { ICommonObject, INode, INodeData, INodeParams } from '../../../src/Interface'
 import { S3Loader } from 'langchain/document_loaders/web/s3'
 import { TextSplitter } from 'langchain/text_splitter'
-import { getCredentialData, getCredentialParam } from '../../../src/utils'
 
 class S3_DocumentLoaders implements INode {
     label: string
@@ -50,7 +49,7 @@ class S3_DocumentLoaders implements INode {
                 label: 'Secret access Key',
                 name: 'SecretAccessKeyID',
                 type: 'password'
-            }, 
+            },
             {
                 label: 'Text Splitter',
                 name: 'textSplitter',
@@ -60,8 +59,7 @@ class S3_DocumentLoaders implements INode {
             {
                 label: 'NarrativeText Only',
                 name: 'narrativeTextOnly',
-                description:
-                    'Only load documents with NarrativeText metadata from Unstructured',
+                description: 'Only load documents with NarrativeText metadata from Unstructured',
                 type: 'boolean',
                 optional: true,
                 additionalParams: true
@@ -89,7 +87,7 @@ class S3_DocumentLoaders implements INode {
             if (bucket1 && file_name && region1 && AccessKeyID1 && SecretAccessKeyID1) {
                 const loader = new S3Loader({
                     bucket: bucket1,
-                    key:file_name,
+                    key: file_name,
                     s3Config: {
                         region: region1,
                         credentials: {
@@ -101,7 +99,7 @@ class S3_DocumentLoaders implements INode {
                     unstructuredAPIKey: 'LnV3sMnJnBjk4heCxBZLxupWLcSNLu'
                 })
                 if (textSplitter) {
-                    try{
+                    try {
                         const docs = await loader.loadAndSplit(textSplitter)
                         if (metadata) {
                             const parsedMetadata = typeof metadata === 'object' ? metadata : JSON.parse(metadata)
@@ -112,20 +110,16 @@ class S3_DocumentLoaders implements INode {
                                         ...doc.metadata,
                                         ...parsedMetadata
                                     }
-                                } 
+                                }
                             })
                             return narrativeTextOnly ? finaldocs.filter((doc) => doc.metadata.category === 'NarrativeText') : finaldocs
                         }
                         return narrativeTextOnly ? docs.filter((doc) => doc.metadata.category === 'NarrativeText') : docs
-                    }
-                    catch(e:any){
+                    } catch (e: any) {
                         throw new Error(`${e}`)
                     }
-                        
-
-                        }
-                else{
-                    try{
+                } else {
+                    try {
                         const docs = await loader.load()
                         if (metadata) {
                             const parsedMetadata = typeof metadata === 'object' ? metadata : JSON.parse(metadata)
@@ -141,22 +135,17 @@ class S3_DocumentLoaders implements INode {
                             return narrativeTextOnly ? finaldocs.filter((doc) => doc.metadata.category === 'NarrativeText') : finaldocs
                         }
                         return narrativeTextOnly ? docs.filter((doc) => doc.metadata.category === 'NarrativeText') : docs
-                    }
-                    catch(e:any){
+                    } catch (e: any) {
                         throw new Error(`${e}`)
                     }
-            }
+                }
             } else {
                 console.error('Some required properties are undefined.')
             }
-            
-        
         } catch (error) {
             console.error('An error occurred:', error)
             throw error
-            
         }
-        
     }
 }
 module.exports = { nodeClass: S3_DocumentLoaders }

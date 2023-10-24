@@ -31,7 +31,6 @@ import { flowContext } from 'store/context/ReactFlowContext'
 // API
 import nodesApi from 'api/nodes'
 import chatflowsApi from 'api/chatflows'
-import chatmessageApi from 'api/chatmessage'
 import predictionApi from 'api/prediction'
 
 // Hooks

@@ -1,6 +1,5 @@
 import { TImage } from 'bard-ai'
 import { ICommonObject, INode, INodeData, INodeParams } from '../../../src/Interface'
-import { getBaseClasses, getCredentialData, getCredentialParam } from '../../../src/utils'
 
 class ImageProcessor_Tools implements INode {
     label: string
@@ -13,7 +12,7 @@ class ImageProcessor_Tools implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
-    outputs: { label: string; name: string; type: string; }[]
+    outputs: { label: string; name: string; type: string }[]
 
     constructor() {
         this.label = 'Image Processor'
@@ -46,7 +45,7 @@ class ImageProcessor_Tools implements INode {
             // Dynamically import the bard-ai module
             const BardModule = await import('bard-ai')
             const Bard: typeof BardModule.default = BardModule.default // Access the default export
-        
+
             const myBard = new Bard(psid)
 
             // Get the image description from Google Bard

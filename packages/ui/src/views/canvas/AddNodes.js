@@ -13,7 +13,6 @@ import {
     Divider,
     InputAdornment,
     List,
-    ListItemButton,
     ListItem,
     ListItemAvatar,
     ListItemText,
@@ -28,7 +27,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // project imports
-import MainCard from 'ui-component/cards/MainCard'
 
 // icons
 import { IconSearch, IconX } from '@tabler/icons'

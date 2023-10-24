@@ -6,7 +6,6 @@ import { Client } from 'langsmith'
 import { LangChainTracer } from 'langchain/callbacks'
 import { getCredentialData, getCredentialParam } from './utils'
 import { ICommonObject, INodeData } from './Interface'
-import CallbackHandler from 'langfuse-langchain'
 
 interface AgentRun extends Run {
     actions: AgentAction[]

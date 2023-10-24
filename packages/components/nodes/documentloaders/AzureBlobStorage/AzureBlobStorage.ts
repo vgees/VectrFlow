@@ -1,4 +1,3 @@
-import { load } from 'js-yaml'
 import { ICommonObject, INode, INodeData, INodeParams } from '../../../src/Interface'
 import { AzureBlobStorageFileLoader } from 'langchain/document_loaders/web/azure_blob_storage_file'
 import { TextSplitter } from 'langchain/text_splitter'
@@ -49,7 +48,7 @@ class AzureBlobStorage_DocumentLoaders implements INode {
             {
                 label: 'NarrativeText Only',
                 name: 'narrativeTextOnly',
-                description:'Only load documents with NarrativeText metadata from Unstructured',
+                description: 'Only load documents with NarrativeText metadata from Unstructured',
                 type: 'boolean',
                 optional: true,
                 additionalParams: true
@@ -94,19 +93,16 @@ class AzureBlobStorage_DocumentLoaders implements INode {
                                     metadata: {
                                         ...doc.metadata,
                                         ...parsedMetadata
-                                     }
-                                } 
+                                    }
+                                }
                             })
                             return narrativeTextOnly ? finaldocs.filter((doc) => doc.metadata.category === 'NarrativeText') : finaldocs
                         }
                         return narrativeTextOnly ? docs.filter((doc) => doc.metadata.category === 'NarrativeText') : docs
-                    } catch(e:any){
+                    } catch (e: any) {
                         throw new Error(`${e}`)
                     }
-                        
-        
-                        }
-                else{
+                } else {
                     try {
                         const docs = await loader.load()
                         if (metadata) {
@@ -123,15 +119,15 @@ class AzureBlobStorage_DocumentLoaders implements INode {
                             return narrativeTextOnly ? finaldocs.filter((doc) => doc.metadata.category === 'NarrativeText') : finaldocs
                         }
                         return narrativeTextOnly ? docs.filter((doc) => doc.metadata.category === 'NarrativeText') : docs
-                    } catch(e:any){
+                    } catch (e: any) {
                         throw new Error(`${e}`)
                     }
                 }
             } else {
                 console.error('Some required properties are undefined.')
             }
-        }
-        catch (error) { console.error('An error occurred:', error)
+        } catch (error) {
+            console.error('An error occurred:', error)
             throw error
         }
     }
