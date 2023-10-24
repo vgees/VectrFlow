@@ -1,7 +1,6 @@
 import { ICommonObject, INode, INodeData, INodeParams } from '../../../src/Interface'
 import { RetrievalQAChain } from 'langchain/chains'
 import { getBaseClasses } from '../../../src/utils'
-import { ConsoleCallbackHandler, additionalCallbacks } from '../../../src/handler'
 
 class ImageConversationChain_Chains implements INode {
     label: string
@@ -32,15 +31,13 @@ class ImageConversationChain_Chains implements INode {
         ]
     }
 
-    async init(nodeData: INodeData): Promise<any> {
+    async init(_nodeData: INodeData): Promise<any> {
         // TODO: Here you can initialize any data you need
         // You had a commented-out RetrievalQAChain initialization, which can go here if needed
     }
 
-    async run(nodeData: INodeData, input: string, options: ICommonObject): Promise<string> {
+    async run(nodeData: INodeData, _input: string, _options: ICommonObject): Promise<string> {
         const imageDescription = nodeData.inputs?.imageDescription as string
-        const loggerHandler = new ConsoleCallbackHandler(options.logger)
-        const callbacks = await additionalCallbacks(nodeData, options)
 
         // TODO: Any logic or operations you want to do with the image description can go here
         // For now, it simply returns the description

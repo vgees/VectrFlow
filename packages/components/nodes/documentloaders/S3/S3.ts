@@ -74,7 +74,7 @@ class S3_DocumentLoaders implements INode {
         ]
     }
 
-    async init(nodeData: INodeData, _: string, options: ICommonObject): Promise<any> {
+    async init(nodeData: INodeData, _: string, _options: ICommonObject): Promise<any> {
         try {
             const bucket1 = nodeData.inputs?.BucketName as string
             const file_name = nodeData.inputs?.FileName as string

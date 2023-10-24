@@ -37,7 +37,7 @@ class ImageProcessor_Tools implements INode {
         ]
     }
 
-    async init(nodeData: INodeData, _: string, options: ICommonObject): Promise<string> {
+    async init(nodeData: INodeData, _: string, _options: ICommonObject): Promise<string> {
         const psid = nodeData.inputs?.secure1PSID as string
         const imageUrl = nodeData.inputs?.imageUrl as string
 

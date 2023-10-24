@@ -62,7 +62,7 @@ class AzureBlobStorage_DocumentLoaders implements INode {
             }
         ]
     }
-    async init(nodeData: INodeData, _: string, options: ICommonObject): Promise<any> {
+    async init(nodeData: INodeData, _: string, _options: ICommonObject): Promise<any> {
         const constring = nodeData.inputs?.ConnectionString as string
         const contname = nodeData.inputs?.ContainerName as string
         const Blobname1 = nodeData.inputs?.BlobName as string
