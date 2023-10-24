@@ -31,6 +31,6 @@ module.exports = {
         commonjs: true,
         es6: true,
         jest: true,
-        'process.env.CI': false  // Set process.env.CI to false
+        'process.env.CI': true  // Set process.env.CI to false
     }
 };
