@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+
   pull_request:
     branches:
       - '*'
@@ -16,32 +17,23 @@ jobs:
     strategy:
       matrix:
         platform: [ubuntu-latest]
-        node-version: [18]  # Specify a valid Node.js version here
+        node-version: [18]
     runs-on: ${{ matrix.platform }}
     env:
-      PUPPETEER_SKIP_DOWNLOAD: false  # Remove this line if you want to download Chromium
-      process.env.CI: false
-
+      PUPPETEER_SKIP_DOWNLOAD: true
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
+      - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: Install Yarn
-        run: npm install -g yarn
+      - run: npm i -g yarn
 
-      - name: Cache Yarn packages
-        uses: actions/cache@v2
-        with:
-          path: ~/.yarn
-          key: yarn-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-
-      - name: Install dependencies
-        run: yarn install
+      - run: yarn install
 
       - name: Build
         run: yarn build
+
+      - name: Lint
+        run: yarn lint
