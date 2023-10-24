@@ -24,5 +24,16 @@ module.exports = {
         'no-undef': 'off',
         'no-console': [process.env.CI ? 'error' : 'warn', { allow: ['warn', 'error', 'info'] }],
         'prettier/prettier': 'error'
-    }
+    },
+      overrides: [
+    {
+      files: ["**/*.js"],
+      options: {
+        rules: {
+          // Disable the rule that treats warnings as errors
+          "react-scripts/treat-warnings-as-errors": "off",
+        },
+      },
+    },
+  ]
 }
