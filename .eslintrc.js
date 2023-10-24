@@ -24,5 +24,14 @@ module.exports = {
         'no-undef': 'off',
         'no-console': [process.env.CI ? 'error' : 'warn', { allow: ['warn', 'error', 'info'] }],
         'prettier/prettier': 'error'
+    },
+    env: {
+        browser: true,
+        node: true,
+        commonjs: true,
+        es6: true,
+        jest: true,
+        'process.env.CI': false  // Set process.env.CI to false
     }
+    
 }
