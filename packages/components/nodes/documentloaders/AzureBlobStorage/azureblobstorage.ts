@@ -2,6 +2,7 @@ import { load } from 'js-yaml'
 import { ICommonObject, INode, INodeData, INodeParams } from '../../../src/Interface'
 import { AzureBlobStorageFileLoader } from 'langchain/document_loaders/web/azure_blob_storage_file'
 import { TextSplitter } from 'langchain/text_splitter'
+import { getCredentialData, getCredentialParam } from '../../../src/utils'
 class AzureBlobStorage_DocumentLoaders implements INode {
     label: string
     name: string
@@ -23,12 +24,13 @@ class AzureBlobStorage_DocumentLoaders implements INode {
         this.category = 'Document Loaders'
         this.description = 'Load Data from Azure Blob Storage'
         this.baseClasses = [this.type]
+        this.credential = {
+            label: 'Azure Credential',
+            name: 'credential',
+            type: 'credential',
+            credentialNames: ['AzureApi']
+        }
         this.inputs = [
-            {
-                label: 'Connection String',
-                name: 'ConnectionString',
-                type: 'string'
-            },
             {
                 label: 'Container Name',
                 name: 'ContainerName',
@@ -65,12 +67,14 @@ class AzureBlobStorage_DocumentLoaders implements INode {
         ]
     }
     async init(nodeData: INodeData, _: string, options: ICommonObject): Promise<any> {
-        const constring = nodeData.inputs?.ConnectionString as string
+        //const constring = nodeData.inputs?.ConnectionString as string
         const contname = nodeData.inputs?.ContainerName as string
         const Blobname1 = nodeData.inputs?.BlobName as string
         const textSplitter = nodeData.inputs?.textSplitter as TextSplitter;
         const metadata = nodeData.inputs?.metadata1;
         const narrativeTextOnly = nodeData.inputs?.narrativeTextOnly as boolean
+        const credentialData = await getCredentialData(nodeData.credential ?? '', options)
+        const constring = getCredentialParam('connectionstring', credentialData, nodeData)
         try{
             if (constring && contname && Blobname1){
                 const loader = new AzureBlobStorageFileLoader({

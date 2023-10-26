@@ -56,7 +56,7 @@ class Pdf_DocumentLoaders implements INode {
                 name: 'legacyBuild',
                 type: 'boolean',
                 optional: true,
-                additionalParams: true
+                description: 'Enable to parse through tables'
             },
             {
                 label: 'Metadata',

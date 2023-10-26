@@ -24,6 +24,12 @@ class S3_DocumentLoaders implements INode {
         this.category = 'Document Loaders'
         this.description = 'Load Data from S3 Buckets'
         this.baseClasses = [this.type]
+        this.credential = {
+            label: 'AWS Credential',
+            name: 'credential',
+            type: 'credential',
+            credentialNames: ['awsApi']
+        }
         this.inputs = [
             {
                 label: 'Bucket',
@@ -41,16 +47,6 @@ class S3_DocumentLoaders implements INode {
                 name: 'Region',
                 type: 'string'
             },
-            {
-                label: 'Access Key',
-                name: 'AccessKey',
-                type: 'password'
-            },
-            {
-                label: 'Secret access Key',
-                name: 'SecretAccessKeyID',
-                type: 'password'
-            }, 
             {
                 label: 'Text Splitter',
                 name: 'textSplitter',
@@ -81,11 +77,12 @@ class S3_DocumentLoaders implements INode {
             const bucket1 = nodeData.inputs?.BucketName as string;
             const file_name = nodeData.inputs?.FileName as string;
             const region1 = nodeData.inputs?.Region as string;
-            const AccessKeyID1 = nodeData.inputs?.AccessKey as string;
-            const SecretAccessKeyID1 = nodeData.inputs?.SecretAccessKeyID as string;
             const textSplitter = nodeData.inputs?.textSplitter as TextSplitter;
             const metadata = nodeData.inputs?.metadata1;
             const narrativeTextOnly = nodeData.inputs?.narrativeTextOnly as boolean
+            const credentialData = await getCredentialData(nodeData.credential ?? '', options)
+            const AccessKeyID1 = getCredentialParam('awsKey', credentialData, nodeData)
+            const SecretAccessKeyID1 = getCredentialParam('awsSecret', credentialData, nodeData)
             if (bucket1 && file_name && region1 && AccessKeyID1 && SecretAccessKeyID1) {
                 const loader = new S3Loader({
                     bucket: bucket1,
@@ -100,6 +97,7 @@ class S3_DocumentLoaders implements INode {
                     unstructuredAPIURL: 'https://api.unstructured.io/general/v0/general',
                     unstructuredAPIKey: 'LnV3sMnJnBjk4heCxBZLxupWLcSNLu'
                 });
+                
                 if (textSplitter) {
                     try{
                         const docs = await loader.loadAndSplit(textSplitter)
