@@ -195,7 +195,8 @@ const CanvasNode = ({ data }) => {
                                     <Typography
                                         sx={{
                                             fontWeight: 500,
-                                            textAlign: 'center'
+                                            textAlign: 'center',
+                                            color: '#2F5597'
                                         }}
                                     >
                                         Inputs
@@ -231,7 +232,8 @@ const CanvasNode = ({ data }) => {
                             <Typography
                                 sx={{
                                     fontWeight: 500,
-                                    textAlign: 'center'
+                                    textAlign: 'center',
+                                    color: '#EC73FF'
                                 }}
                             >
                                 Output

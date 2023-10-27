@@ -212,7 +212,7 @@ const AddNodes = ({ nodesData, node }) => {
                                                 {nodes[category].map((node, index) => (
                                                     <div key={node.name} onDragStart={(event) => onDragStart(event, node)} draggable>
                                                         <ListItem
-                                                            alignItems='center'
+                                                            alignItems='flex-start'
                                                             sx={{
                                                                 cursor: 'move'
                                                             }}
