@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 import { useRef } from 'react'
-
 // material-ui
 import { useTheme } from '@mui/material/styles'
 import {
@@ -239,11 +238,7 @@ const AddNodes = ({ nodesData, node }) => {
                                                                     />
                                                                 </div>
                                                             </ListItemAvatar>
-                                                            <ListItemText
-                                                                sx={{ ml: 1 }}
-                                                                primary={node.label}
-                                                                secondary={node.description}
-                                                            />
+                                                            <ListItemText sx={{ ml: 1 }} primary={node.label} title={node.description} />
                                                         </ListItem>
                                                         {index === nodes[category].length - 1 ? null : <Divider />}
                                                     </div>
