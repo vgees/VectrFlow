@@ -10,6 +10,7 @@ class CustomTool_Tools implements INode {
     version: number
     description: string
     type: string
+    color: string
     icon: string
     category: string
     baseClasses: string[]
@@ -19,8 +20,9 @@ class CustomTool_Tools implements INode {
         this.label = 'Custom Tool'
         this.name = 'customTool'
         this.version = 1.0
+        this.color = '#99FFCC'
         this.type = 'CustomTool'
-        this.icon = 'customtool.svg'
+        this.icon = 'customtool.png'
         this.category = 'Tools'
         this.description = `Use custom tool you've created in Flowise within chatflow`
         this.inputs = [

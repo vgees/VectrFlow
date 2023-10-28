@@ -13,6 +13,7 @@ class PostgresUpsert_VectorStores implements INode {
     version: number
     description: string
     type: string
+    color: string
     icon: string
     category: string
     baseClasses: string[]
@@ -23,6 +24,7 @@ class PostgresUpsert_VectorStores implements INode {
     constructor() {
         this.label = 'Postgres Upsert Document'
         this.name = 'postgresUpsert'
+        this.color = '#FF99B2'
         this.version = 1.0
         this.type = 'Postgres'
         this.icon = 'postgres.svg'

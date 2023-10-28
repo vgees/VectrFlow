@@ -9,6 +9,7 @@ class VectaraUpload_VectorStores implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -20,6 +21,7 @@ class VectaraUpload_VectorStores implements INode {
         this.name = 'vectaraUpload'
         this.version = 1.0
         this.type = 'Vectara'
+        this.color = '#FF99B2'
         this.icon = 'vectara.png'
         this.category = 'Vector Stores'
         this.description = 'Upload files to Vectara'

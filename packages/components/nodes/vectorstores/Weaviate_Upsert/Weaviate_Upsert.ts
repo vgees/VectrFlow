@@ -12,6 +12,7 @@ class WeaviateUpsert_VectorStores implements INode {
     version: number
     description: string
     type: string
+    color: string
     icon: string
     category: string
     baseClasses: string[]
@@ -23,6 +24,7 @@ class WeaviateUpsert_VectorStores implements INode {
         this.label = 'Weaviate Upsert Document'
         this.name = 'weaviateUpsert'
         this.version = 1.0
+        this.color = '#FF99B2'
         this.type = 'Weaviate'
         this.icon = 'weaviate.png'
         this.category = 'Vector Stores'

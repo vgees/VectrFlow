@@ -9,6 +9,7 @@ class Text_DocumentLoaders implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -17,6 +18,7 @@ class Text_DocumentLoaders implements INode {
         this.label = 'Text File'
         this.name = 'textFile'
         this.version = 1.0
+        this.color = '#CC99FF'
         this.type = 'Document'
         this.icon = 'textFile.svg'
         this.category = 'Document Loaders'

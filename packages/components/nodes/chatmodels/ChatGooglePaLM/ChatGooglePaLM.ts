@@ -9,6 +9,7 @@ class ChatGooglePaLM_ChatModels implements INode {
     type: string
     icon: string
     category: string
+    color: string
     description: string
     baseClasses: string[]
     credential: INodeParams
@@ -21,6 +22,7 @@ class ChatGooglePaLM_ChatModels implements INode {
         this.type = 'ChatGooglePaLM'
         this.icon = 'Google_PaLM_Logo.svg'
         this.category = 'Chat Models'
+        this.color = '#FF6688'
         this.description = 'Wrapper around Google MakerSuite PaLM large language models using the Chat endpoint'
         this.baseClasses = [this.type, ...getBaseClasses(ChatGooglePaLM)]
         this.credential = {

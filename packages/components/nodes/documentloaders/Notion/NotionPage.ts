@@ -10,6 +10,7 @@ class NotionPage_DocumentLoaders implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     credential: INodeParams
@@ -20,6 +21,7 @@ class NotionPage_DocumentLoaders implements INode {
         this.name = 'notionPage'
         this.version = 1.0
         this.type = 'Document'
+        this.color = '#CC99FF'
         this.icon = 'notion.png'
         this.category = 'Document Loaders'
         this.description = 'Load data from Notion Page (including child pages all as separate documents)'

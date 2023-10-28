@@ -10,6 +10,7 @@ class AIPlugin implements INode {
     type: string
     icon: string
     category: string
+    color: string
     baseClasses: string[]
     inputs?: INodeParams[]
 
@@ -19,6 +20,7 @@ class AIPlugin implements INode {
         this.version = 1.0
         this.type = 'AIPlugin'
         this.icon = 'aiplugin.svg'
+        this.color = '#99FFCC'
         this.category = 'Tools'
         this.description = 'Execute actions using ChatGPT Plugin Url'
         this.baseClasses = [this.type, ...getBaseClasses(AIPluginTool)]

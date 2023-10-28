@@ -9,6 +9,7 @@ class CohereEmbedding_Embeddings implements INode {
     type: string
     icon: string
     category: string
+    color: string
     description: string
     baseClasses: string[]
     credential: INodeParams
@@ -21,6 +22,7 @@ class CohereEmbedding_Embeddings implements INode {
         this.type = 'CohereEmbeddings'
         this.icon = 'cohere.png'
         this.category = 'Embeddings'
+        this.color = '#FFFF99'
         this.description = 'Cohere API to generate embeddings for a given text'
         this.baseClasses = [this.type, ...getBaseClasses(CohereEmbeddings)]
         this.credential = {

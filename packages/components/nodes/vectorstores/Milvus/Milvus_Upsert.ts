@@ -19,6 +19,7 @@ class Milvus_Upsert_VectorStores implements INode {
     icon: string
     category: string
     baseClasses: string[]
+    color: string
     inputs: INodeParams[]
     credential: INodeParams
     outputs: INodeOutputsValue[]
@@ -28,6 +29,7 @@ class Milvus_Upsert_VectorStores implements INode {
         this.name = 'milvusUpsert'
         this.version = 1.0
         this.type = 'Milvus'
+        this.color = '#FF99B2'
         this.icon = 'milvus.svg'
         this.category = 'Vector Stores'
         this.description = 'Upsert documents to Milvus'

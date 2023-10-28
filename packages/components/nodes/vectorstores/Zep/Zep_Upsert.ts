@@ -12,6 +12,7 @@ class Zep_Upsert_VectorStores implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -22,6 +23,7 @@ class Zep_Upsert_VectorStores implements INode {
         this.label = 'Zep Upsert Document'
         this.name = 'zepUpsert'
         this.version = 1.0
+        this.color = '#FF99B2'
         this.type = 'Zep'
         this.icon = 'zep.png'
         this.category = 'Vector Stores'

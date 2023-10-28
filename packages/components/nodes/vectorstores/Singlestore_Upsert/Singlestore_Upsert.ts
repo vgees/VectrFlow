@@ -12,6 +12,7 @@ class SingleStoreUpsert_VectorStores implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -23,6 +24,7 @@ class SingleStoreUpsert_VectorStores implements INode {
         this.name = 'singlestoreUpsert'
         this.version = 1.0
         this.type = 'SingleStore'
+        this.color = '#FF99B2'
         this.icon = 'singlestore.svg'
         this.category = 'Vector Stores'
         this.description = 'Upsert documents to SingleStore'

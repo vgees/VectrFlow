@@ -8,6 +8,7 @@ class MarkdownTextSplitter_TextSplitters implements INode {
     version: number
     description: string
     type: string
+    color: string
     icon: string
     category: string
     baseClasses: string[]
@@ -20,6 +21,7 @@ class MarkdownTextSplitter_TextSplitters implements INode {
         this.type = 'MarkdownTextSplitter'
         this.icon = 'markdownTextSplitter.png'
         this.category = 'Text Splitters'
+        this.color = '#FF99CC'
         this.description = `Split your content into documents based on the Markdown headers`
         this.baseClasses = [this.type, ...getBaseClasses(MarkdownTextSplitter)]
         this.inputs = [

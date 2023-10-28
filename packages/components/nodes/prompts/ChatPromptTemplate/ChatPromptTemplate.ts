@@ -9,6 +9,7 @@ class ChatPromptTemplate_Prompts implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -18,8 +19,9 @@ class ChatPromptTemplate_Prompts implements INode {
         this.name = 'chatPromptTemplate'
         this.version = 1.0
         this.type = 'ChatPromptTemplate'
-        this.icon = 'prompt.svg'
+        this.icon = 'prompt.png'
         this.category = 'Prompts'
+        this.color = '#99E6E6'
         this.description = 'Schema to represent a chat prompt'
         this.baseClasses = [this.type, ...getBaseClasses(ChatPromptTemplate)]
         this.inputs = [

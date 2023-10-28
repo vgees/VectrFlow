@@ -13,6 +13,7 @@ class ChatHuggingFace_ChatModels implements INode {
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
+    color: string
 
     constructor() {
         this.label = 'ChatHuggingFace'
@@ -20,6 +21,7 @@ class ChatHuggingFace_ChatModels implements INode {
         this.version = 1.0
         this.type = 'ChatHuggingFace'
         this.icon = 'huggingface.png'
+        this.color = '#FF6688'
         this.category = 'Chat Models'
         this.description = 'Wrapper around HuggingFace large language models'
         this.baseClasses = [this.type, 'BaseChatModel', ...getBaseClasses(HuggingFaceInference)]

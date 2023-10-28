@@ -8,6 +8,7 @@ class AzureOpenAIEmbedding_Embeddings implements INode {
     name: string
     version: number
     type: string
+    color: string
     icon: string
     category: string
     description: string
@@ -20,6 +21,7 @@ class AzureOpenAIEmbedding_Embeddings implements INode {
         this.name = 'azureOpenAIEmbeddings'
         this.version = 1.0
         this.type = 'AzureOpenAIEmbeddings'
+        this.color = '#FFFF99'
         this.icon = 'Azure.svg'
         this.category = 'Embeddings'
         this.description = 'Azure OpenAI API to generate embeddings for a given text'

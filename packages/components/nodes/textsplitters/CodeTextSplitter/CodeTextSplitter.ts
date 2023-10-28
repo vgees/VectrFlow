@@ -11,6 +11,7 @@ class CodeTextSplitter_TextSplitters implements INode {
     name: string
     version: number
     description: string
+    color: string
     type: string
     icon: string
     category: string
@@ -21,6 +22,7 @@ class CodeTextSplitter_TextSplitters implements INode {
         this.name = 'codeTextSplitter'
         this.version = 1.0
         this.type = 'CodeTextSplitter'
+        this.color = '#FF99CC'
         this.icon = 'codeTextSplitter.png'
         this.category = 'Text Splitters'
         this.description = `Split documents based on language-specific syntax`

@@ -10,6 +10,7 @@ class GooglePaLMEmbedding_Embeddings implements INode {
     icon: string
     category: string
     description: string
+    color: string
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
@@ -20,6 +21,7 @@ class GooglePaLMEmbedding_Embeddings implements INode {
         this.version = 1.0
         this.type = 'GooglePaLMEmbeddings'
         this.icon = 'Google_PaLM_Logo.svg'
+        this.color = '#FFFF99'
         this.category = 'Embeddings'
         this.description = 'Google MakerSuite PaLM API to generate embeddings for a given text'
         this.baseClasses = [this.type, ...getBaseClasses(GooglePaLMEmbeddings)]

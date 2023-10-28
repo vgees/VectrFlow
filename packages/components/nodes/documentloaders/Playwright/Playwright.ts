@@ -10,6 +10,7 @@ class Playwright_DocumentLoaders implements INode {
     version: number
     description: string
     type: string
+    color: string
     icon: string
     category: string
     baseClasses: string[]
@@ -20,6 +21,7 @@ class Playwright_DocumentLoaders implements INode {
         this.name = 'playwrightWebScraper'
         this.version = 1.0
         this.type = 'Document'
+        this.color = '#CC99FF'
         this.icon = 'playwright.svg'
         this.category = 'Document Loaders'
         this.description = `Load data from webpages`

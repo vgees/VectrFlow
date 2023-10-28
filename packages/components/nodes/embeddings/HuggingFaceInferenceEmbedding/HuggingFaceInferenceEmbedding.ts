@@ -9,6 +9,7 @@ class HuggingFaceInferenceEmbedding_Embeddings implements INode {
     type: string
     icon: string
     category: string
+    color: string
     description: string
     baseClasses: string[]
     credential: INodeParams
@@ -19,6 +20,7 @@ class HuggingFaceInferenceEmbedding_Embeddings implements INode {
         this.name = 'huggingFaceInferenceEmbeddings'
         this.version = 1.0
         this.type = 'HuggingFaceInferenceEmbeddings'
+        this.color = '#FFFF99'
         this.icon = 'huggingface.png'
         this.category = 'Embeddings'
         this.description = 'HuggingFace Inference API to generate embeddings for a given text'

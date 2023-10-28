@@ -9,6 +9,7 @@ class Weaviate_Existing_VectorStores implements INode {
     name: string
     version: number
     description: string
+    color: string
     type: string
     icon: string
     category: string
@@ -21,6 +22,7 @@ class Weaviate_Existing_VectorStores implements INode {
         this.label = 'Weaviate Load Existing Index'
         this.name = 'weaviateExistingIndex'
         this.version = 1.0
+        this.color = '#FF99B2'
         this.type = 'Weaviate'
         this.icon = 'weaviate.png'
         this.category = 'Vector Stores'

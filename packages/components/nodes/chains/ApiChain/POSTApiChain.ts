@@ -12,6 +12,7 @@ class POSTApiChain_Chains implements INode {
     type: string
     icon: string
     category: string
+    color: string
     baseClasses: string[]
     description: string
     inputs: INodeParams[]
@@ -20,6 +21,7 @@ class POSTApiChain_Chains implements INode {
         this.label = 'POST API Chain'
         this.name = 'postApiChain'
         this.version = 1.0
+        this.color = '#66FFB2'
         this.type = 'POSTApiChain'
         this.icon = 'apichain.svg'
         this.category = 'Chains'

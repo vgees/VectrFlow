@@ -148,14 +148,14 @@ const CanvasNode = ({ data }) => {
                     placement='right-start'
                 >
                     <Box>
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', backgroundColor: `${data.color}` }}>
                             <Box style={{ width: 50, marginRight: 10, padding: 5 }}>
                                 <div
                                     style={{
                                         ...theme.typography.commonAvatar,
                                         ...theme.typography.largeAvatar,
                                         borderRadius: '50%',
-                                        backgroundColor: 'white',
+                                        backgroundColor: `${data.color}`,
                                         cursor: 'grab'
                                     }}
                                 >
@@ -170,8 +170,10 @@ const CanvasNode = ({ data }) => {
                                 <Typography
                                     sx={{
                                         fontSize: '1rem',
+                                        font: 'Helvetica Neue',
                                         fontWeight: 500,
-                                        mr: 2
+                                        mr: 2,
+                                        color: '#000000'
                                     }}
                                 >
                                     {data.label}

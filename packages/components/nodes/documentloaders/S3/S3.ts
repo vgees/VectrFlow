@@ -10,6 +10,7 @@ class S3_DocumentLoaders implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     credential: INodeParams
@@ -22,6 +23,7 @@ class S3_DocumentLoaders implements INode {
         this.type = 'Document'
         this.icon = 'S3.png'
         this.category = 'Document Loaders'
+        this.color = '#CC99FF'
         this.description = 'Load Data from S3 Buckets'
         this.baseClasses = [this.type]
         this.credential = {

@@ -11,6 +11,7 @@ class VectorDBQAChain_Chains implements INode {
     version: number
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     description: string
@@ -21,6 +22,7 @@ class VectorDBQAChain_Chains implements INode {
         this.name = 'vectorDBQAChain'
         this.version = 1.0
         this.type = 'VectorDBQAChain'
+        this.color = '#66FFB2'
         this.icon = 'chain.png'
         this.category = 'Chains'
         this.description = 'QA chain for vector databases'

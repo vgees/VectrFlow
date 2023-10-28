@@ -11,6 +11,7 @@ class Supabase_Existing_VectorStores implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -23,6 +24,7 @@ class Supabase_Existing_VectorStores implements INode {
         this.version = 1.0
         this.type = 'Supabase'
         this.icon = 'supabase.svg'
+        this.color = '#FF99B2'
         this.category = 'Vector Stores'
         this.description = 'Load existing index from Supabase (i.e: Document has been upserted)'
         this.baseClasses = [this.type, 'VectorStoreRetriever', 'BaseRetriever']

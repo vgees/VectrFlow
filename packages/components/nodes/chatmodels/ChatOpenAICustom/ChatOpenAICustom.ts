@@ -7,6 +7,7 @@ class ChatOpenAICustom_ChatModels implements INode {
     name: string
     version: number
     type: string
+    color: string
     icon: string
     category: string
     description: string
@@ -19,6 +20,7 @@ class ChatOpenAICustom_ChatModels implements INode {
         this.name = 'chatOpenAICustom'
         this.version = 1.0
         this.type = 'ChatOpenAI-Custom'
+        this.color = '#FF6688'
         this.icon = 'openai.png'
         this.category = 'Chat Models'
         this.description = 'Custom/FineTuned model using OpenAI Chat compatible API'

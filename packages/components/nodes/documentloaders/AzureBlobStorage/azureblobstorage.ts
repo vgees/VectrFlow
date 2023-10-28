@@ -10,6 +10,7 @@ class AzureBlobStorage_DocumentLoaders implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     credential: INodeParams
@@ -20,6 +21,7 @@ class AzureBlobStorage_DocumentLoaders implements INode {
         this.name = 'AzureBlobStorage'
         this.version = 1.0
         this.type = 'Document'
+        this.color = '#CC99FF'
         this.icon = 'azureblobstorage.png'
         this.category = 'Document Loaders'
         this.description = 'Load Data from Azure Blob Storage'

@@ -9,6 +9,7 @@ class BraveSearchAPI_Tools implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     credential: INodeParams
@@ -19,6 +20,7 @@ class BraveSearchAPI_Tools implements INode {
         this.name = 'braveSearchAPI'
         this.version = 1.0
         this.type = 'BraveSearchAPI'
+        this.color = '#99FFCC'
         this.icon = 'brave.svg'
         this.category = 'Tools'
         this.description = 'Wrapper around BraveSearch API - a real-time API to access Brave search results'

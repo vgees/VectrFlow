@@ -8,6 +8,7 @@ class ZepMemory_Memory implements INode {
     label: string
     name: string
     version: number
+    color: string
     description: string
     type: string
     icon: string
@@ -21,6 +22,7 @@ class ZepMemory_Memory implements INode {
         this.name = 'ZepMemory'
         this.version = 1.0
         this.type = 'ZepMemory'
+        this.color = '#D9D9D9'
         this.icon = 'zep.png'
         this.category = 'Memory'
         this.description = 'Summarizes the conversation and stores the memory in zep server'

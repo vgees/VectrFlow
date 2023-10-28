@@ -10,6 +10,7 @@ class MultiRetrievalQAChain_Chains implements INode {
     version: number
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     description: string
@@ -19,6 +20,7 @@ class MultiRetrievalQAChain_Chains implements INode {
         this.label = 'Multi Retrieval QA Chain'
         this.name = 'multiRetrievalQAChain'
         this.version = 1.0
+        this.color = '#66FFB2'
         this.type = 'MultiRetrievalQAChain'
         this.icon = 'chain.png'
         this.category = 'Chains'

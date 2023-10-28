@@ -17,6 +17,7 @@ class AutoGPT_Agents implements INode {
     name: string
     version: number
     description: string
+    color: string
     type: string
     icon: string
     category: string
@@ -27,6 +28,7 @@ class AutoGPT_Agents implements INode {
         this.label = 'AutoGPT'
         this.name = 'autoGPT'
         this.version = 1.0
+        this.color = '#66B2FF'
         this.type = 'AutoGPT'
         this.category = 'Agents'
         this.icon = 'autogpt.png'

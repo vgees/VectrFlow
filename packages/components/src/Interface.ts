@@ -55,6 +55,7 @@ export interface INodeParams {
     label: string
     name: string
     type: NodeParamsType | string
+    color?: string
     default?: CommonType | ICommonObject | ICommonObject[]
     description?: string
     warning?: string

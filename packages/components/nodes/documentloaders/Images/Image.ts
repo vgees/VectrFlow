@@ -7,6 +7,7 @@ class ImageLoader implements INode {
     version: number;
     description: string;
     type: string;
+    color: string
     icon: string;
     category: string;
     baseClasses: string[];
@@ -17,6 +18,7 @@ class ImageLoader implements INode {
         this.name = 'imageFile';
         this.version = 1.0;
         this.type = 'Image';
+        this.color = '#CC99FF'
         this.icon = 'image.png'; 
         this.category = 'Document Loaders';
         this.description = 'Load an image file (jpg, jpeg, or png)';

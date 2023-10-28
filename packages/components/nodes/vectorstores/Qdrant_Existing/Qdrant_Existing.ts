@@ -15,6 +15,7 @@ class Qdrant_Existing_VectorStores implements INode {
     type: string
     icon: string
     category: string
+    color: string
     baseClasses: string[]
     inputs: INodeParams[]
     credential: INodeParams
@@ -27,6 +28,7 @@ class Qdrant_Existing_VectorStores implements INode {
         this.type = 'Qdrant'
         this.icon = 'qdrant.png'
         this.category = 'Vector Stores'
+        this.color = '#FF99B2'
         this.description = 'Load existing index from Qdrant (i.e., documents have been upserted)'
         this.baseClasses = [this.type, 'VectorStoreRetriever', 'BaseRetriever']
         this.credential = {

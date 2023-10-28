@@ -7,6 +7,7 @@ import fetch from 'node-fetch'
 class MotorMemory_Memory implements INode {
     label: string
     name: string
+    color: string
     version: number
     description: string
     type: string
@@ -21,6 +22,7 @@ class MotorMemory_Memory implements INode {
         this.name = 'motorheadMemory'
         this.version = 1.0
         this.type = 'MotorheadMemory'
+        this.color = '#D9D9D9'
         this.icon = 'motorhead.png'
         this.category = 'Memory'
         this.description = 'Use Motorhead Memory to store chat conversations'

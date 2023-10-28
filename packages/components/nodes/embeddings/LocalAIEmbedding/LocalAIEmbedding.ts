@@ -8,6 +8,7 @@ class LocalAIEmbedding_Embeddings implements INode {
     type: string
     icon: string
     category: string
+    color: string
     description: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -17,6 +18,7 @@ class LocalAIEmbedding_Embeddings implements INode {
         this.name = 'localAIEmbeddings'
         this.version = 1.0
         this.type = 'LocalAI Embeddings'
+        this.color = '#FFFF99'
         this.icon = 'localai.png'
         this.category = 'Embeddings'
         this.description = 'Use local embeddings models like llama.cpp'

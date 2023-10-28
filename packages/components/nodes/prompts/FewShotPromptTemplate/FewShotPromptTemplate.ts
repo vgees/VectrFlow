@@ -11,6 +11,7 @@ class FewShotPromptTemplate_Prompts implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -19,8 +20,9 @@ class FewShotPromptTemplate_Prompts implements INode {
         this.label = 'Few Shot Prompt Template'
         this.name = 'fewShotPromptTemplate'
         this.version = 1.0
+        this.color = '#99E6E6'
         this.type = 'FewShotPromptTemplate'
-        this.icon = 'prompt.svg'
+        this.icon = 'prompt.png'
         this.category = 'Prompts'
         this.description = 'Prompt template you can build with examples'
         this.baseClasses = [this.type, ...getBaseClasses(FewShotPromptTemplate)]

@@ -9,6 +9,7 @@ class Cohere_LLMs implements INode {
     type: string
     icon: string
     category: string
+    color: string
     description: string
     baseClasses: string[]
     credential: INodeParams
@@ -20,6 +21,7 @@ class Cohere_LLMs implements INode {
         this.version = 1.0
         this.type = 'Cohere'
         this.icon = 'cohere.png'
+        this.color = '#B2B2B2'
         this.category = 'LLMs'
         this.description = 'Wrapper around Cohere large language models'
         this.baseClasses = [this.type, ...getBaseClasses(Cohere)]

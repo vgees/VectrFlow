@@ -12,6 +12,7 @@ class InMemoryVectorStore_VectorStores implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -23,6 +24,7 @@ class InMemoryVectorStore_VectorStores implements INode {
         this.version = 1.0
         this.type = 'Memory'
         this.icon = 'memory.svg'
+        this.color = '#FF99B2'
         this.category = 'Vector Stores'
         this.description = 'In-memory vectorstore that stores embeddings and does an exact, linear search for the most similar embeddings.'
         this.baseClasses = [this.type, 'VectorStoreRetriever', 'BaseRetriever']
