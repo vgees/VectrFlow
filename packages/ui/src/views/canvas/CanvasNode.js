@@ -18,12 +18,13 @@ import NodeInfoDialog from 'ui-component/dialog/NodeInfoDialog'
 import { baseURL } from 'store/constant'
 import { IconTrash, IconCopy, IconInfoCircle, IconAlertTriangle } from '@tabler/icons'
 import { flowContext } from 'store/context/ReactFlowContext'
+import { NodeToolbar } from 'reactflow'
 
 const CardWrapper = styled(MainCard)(({ theme }) => ({
     background: theme.palette.card.main,
     color: theme.darkTextPrimary,
     border: 'solid 2.5px',
-    borderColor: NodeBorder(data), //theme.palette.primary[200] + 75,
+    borderColor: '#2F5597', //theme.palette.primary[200] + 75,
     width: '300px',
     height: 'auto',
     padding: '10px',
@@ -62,12 +63,36 @@ const CanvasNode = ({ data }) => {
     const handleOpen = () => {
         setOpen(true)
     }
-    const NodeBorder = (data) => {
+
+    const NodeBorder = () => {
         if (data.category == 'Agents') {
-            return '#000000'
+            return '#0066CC'
+        } else if (data.category == 'Chains') {
+            return '#009966'
+        } else if (data.category == 'Chat Models') {
+            return '#CC0033'
+        } else if (data.category == 'Document Loaders') {
+            return '#9933CC'
+        } else if (data.category == 'Embeddings') {
+            return '#9933CC'
+        } else if (data.category == 'LLMs') {
+            return '#333333'
+        } else if (data.category == 'Memory') {
+            return '#999999'
+        } else if (data.category == 'Prompts') {
+            return '#33CCCC'
+        } else if (data.category == 'Retrievers') {
+            return '#FF9933'
+        } else if (data.category == 'Text Splitters') {
+            return '#FF66B2'
+        } else if (data.category == 'Tools') {
+            return '#33CC99'
+        } else if (data.category == 'Vector stores') {
+            return '#990033'
         }
-        return theme.palette.primary.main
+        return '#000000'
     }
+
     const nodeOutdatedMessage = (oldVersion, newVersion) => `Node version ${oldVersion} outdated\nUpdate to latest version ${newVersion}`
 
     const nodeVersionEmptyMessage = (newVersion) => `Node outdated\nUpdate to latest version ${newVersion}`
@@ -100,7 +125,7 @@ const CanvasNode = ({ data }) => {
                 content={false}
                 sx={{
                     padding: 0,
-                    borderColor: data.selected ? NodeBorder(data) : '#EC73FF' //theme.palette.primary.main : theme.palette.text.secondary
+                    borderColor: data.selected ? `${data.color}` : NodeBorder
                 }}
                 border={false}
             >
