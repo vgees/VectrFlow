@@ -1,4 +1,5 @@
-import { getBezierPath, EdgeText } from 'reactflow'
+//import { getBezierPath, EdgeText } from 'reactflow'
+import { getSmoothStepPath, EdgeText } from 'reactflow'
 import PropTypes from 'prop-types'
 import { useDispatch } from 'react-redux'
 import { useContext } from 'react'
@@ -10,7 +11,7 @@ import './index.css'
 const foreignObjectSize = 40
 
 const ButtonEdge = ({ id, sourceX, sourceY, targetX, targetY, sourcePosition, targetPosition, style = {}, data, markerEnd }) => {
-    const [edgePath, edgeCenterX, edgeCenterY] = getBezierPath({
+    const [edgePath, edgeCenterX, edgeCenterY] = getSmoothStepPath({
         sourceX,
         sourceY,
         sourcePosition,

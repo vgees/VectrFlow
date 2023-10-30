@@ -23,7 +23,7 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
     background: theme.palette.card.main,
     color: theme.darkTextPrimary,
     border: 'solid 2.5px',
-    borderColor: '#2F5597', //theme.palette.primary[200] + 75,
+    borderColor: NodeBorder(data), //theme.palette.primary[200] + 75,
     width: '300px',
     height: 'auto',
     padding: '10px',
@@ -62,7 +62,12 @@ const CanvasNode = ({ data }) => {
     const handleOpen = () => {
         setOpen(true)
     }
-
+    const NodeBorder = (data) => {
+        if (data.category == 'Agents') {
+            return '#000000'
+        }
+        return theme.palette.primary.main
+    }
     const nodeOutdatedMessage = (oldVersion, newVersion) => `Node version ${oldVersion} outdated\nUpdate to latest version ${newVersion}`
 
     const nodeVersionEmptyMessage = (newVersion) => `Node outdated\nUpdate to latest version ${newVersion}`
@@ -95,7 +100,7 @@ const CanvasNode = ({ data }) => {
                 content={false}
                 sx={{
                     padding: 0,
-                    borderColor: data.selected ? '#EC73FF' : '#2F5597' //theme.palette.primary.main : theme.palette.text.secondary
+                    borderColor: data.selected ? NodeBorder(data) : '#EC73FF' //theme.palette.primary.main : theme.palette.text.secondary
                 }}
                 border={false}
             >
