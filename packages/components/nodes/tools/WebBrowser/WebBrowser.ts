@@ -10,6 +10,7 @@ class WebBrowser_Tools implements INode {
     version: number
     description: string
     type: string
+    color: string
     icon: string
     category: string
     baseClasses: string[]
@@ -21,6 +22,7 @@ class WebBrowser_Tools implements INode {
         this.version = 1.0
         this.type = 'WebBrowser'
         this.icon = 'webBrowser.svg'
+        this.color = '#99FFCC'
         this.category = 'Tools'
         this.description = 'Gives agent the ability to visit a website and extract information'
         this.inputs = [

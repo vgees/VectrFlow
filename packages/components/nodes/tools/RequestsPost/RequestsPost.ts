@@ -9,6 +9,7 @@ class RequestsPost_Tools implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -20,6 +21,7 @@ class RequestsPost_Tools implements INode {
         this.type = 'RequestsPost'
         this.icon = 'requestspost.svg'
         this.category = 'Tools'
+        this.color = '#99FFCC'
         this.description = 'Execute HTTP POST requests'
         this.baseClasses = [this.type, ...getBaseClasses(RequestsPostTool)]
         this.inputs = [

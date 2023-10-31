@@ -9,6 +9,7 @@ class SingleStoreExisting_VectorStores implements INode {
     version: number
     description: string
     type: string
+    color: string
     icon: string
     category: string
     baseClasses: string[]
@@ -20,6 +21,7 @@ class SingleStoreExisting_VectorStores implements INode {
         this.label = 'SingleStore Load Existing Table'
         this.name = 'singlestoreExisting'
         this.version = 1.0
+        this.color = '#FF99B2'
         this.type = 'SingleStore'
         this.icon = 'singlestore.svg'
         this.category = 'Vector Stores'

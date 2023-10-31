@@ -9,6 +9,7 @@ class OpenAIEmbedding_Embeddings implements INode {
     type: string
     icon: string
     category: string
+    color: string
     description: string
     baseClasses: string[]
     credential: INodeParams
@@ -17,6 +18,7 @@ class OpenAIEmbedding_Embeddings implements INode {
     constructor() {
         this.label = 'OpenAI Embeddings'
         this.name = 'openAIEmbeddings'
+        this.color = '#FFFF99'
         this.version = 1.0
         this.type = 'OpenAIEmbeddings'
         this.icon = 'openai.png'

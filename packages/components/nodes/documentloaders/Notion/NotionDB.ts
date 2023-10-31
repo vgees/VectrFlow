@@ -10,6 +10,7 @@ class NotionDB_DocumentLoaders implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     credential: INodeParams
@@ -21,6 +22,7 @@ class NotionDB_DocumentLoaders implements INode {
         this.version = 1.0
         this.type = 'Document'
         this.icon = 'notion.png'
+        this.color = '#CC99FF'
         this.category = 'Document Loaders'
         this.description = 'Load data from Notion Database (each row is a separate document with all properties as metadata)'
         this.baseClasses = [this.type]

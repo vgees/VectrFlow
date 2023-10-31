@@ -9,6 +9,7 @@ class Subtitles_DocumentLoaders implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -18,6 +19,7 @@ class Subtitles_DocumentLoaders implements INode {
         this.name = 'subtitlesFile'
         this.version = 1.0
         this.type = 'Document'
+        this.color = '#CC99FF'
         this.icon = 'subtitlesFile.svg'
         this.category = 'Document Loaders'
         this.description = `Load data from subtitles files`

@@ -22,6 +22,7 @@ class ConversationalRetrievalQAChain_Chains implements INode {
     version: number
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     description: string
@@ -31,6 +32,7 @@ class ConversationalRetrievalQAChain_Chains implements INode {
         this.label = 'Conversational Retrieval QA Chain'
         this.name = 'conversationalRetrievalQAChain'
         this.version = 1.0
+        this.color = '#66FFB2'
         this.type = 'ConversationalRetrievalQAChain'
         this.icon = 'chain.png'
         this.category = 'Chains'

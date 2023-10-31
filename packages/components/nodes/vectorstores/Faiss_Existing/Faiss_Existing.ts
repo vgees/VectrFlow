@@ -10,6 +10,7 @@ class Faiss_Existing_VectorStores implements INode {
     version: number
     description: string
     type: string
+    color: string
     icon: string
     category: string
     baseClasses: string[]
@@ -22,6 +23,7 @@ class Faiss_Existing_VectorStores implements INode {
         this.version = 1.0
         this.type = 'Faiss'
         this.icon = 'faiss.svg'
+        this.color = '#FF99B2'
         this.category = 'Vector Stores'
         this.description = 'Load existing index from Faiss (i.e: Document has been upserted)'
         this.baseClasses = [this.type, 'VectorStoreRetriever', 'BaseRetriever']

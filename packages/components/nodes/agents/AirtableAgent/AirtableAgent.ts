@@ -12,6 +12,7 @@ class Airtable_Agents implements INode {
     name: string
     version: number
     description: string
+    color: string
     type: string
     icon: string
     category: string
@@ -22,6 +23,7 @@ class Airtable_Agents implements INode {
     constructor() {
         this.label = 'Airtable Agent'
         this.name = 'airtableAgent'
+        this.color = '#66B2FF'
         this.version = 1.0
         this.type = 'AgentExecutor'
         this.category = 'Agents'

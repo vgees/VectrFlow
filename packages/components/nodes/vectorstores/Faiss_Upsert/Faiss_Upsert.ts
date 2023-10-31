@@ -10,6 +10,7 @@ class FaissUpsert_VectorStores implements INode {
     name: string
     version: number
     description: string
+    color: string
     type: string
     icon: string
     category: string
@@ -22,6 +23,7 @@ class FaissUpsert_VectorStores implements INode {
         this.name = 'faissUpsert'
         this.version = 1.0
         this.type = 'Faiss'
+        this.color = '#FF99B2'
         this.icon = 'faiss.svg'
         this.category = 'Vector Stores'
         this.description = 'Upsert documents to Faiss'

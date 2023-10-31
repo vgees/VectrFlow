@@ -10,6 +10,7 @@ class Serper_Tools implements INode {
     type: string
     icon: string
     category: string
+    color: string
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
@@ -20,6 +21,7 @@ class Serper_Tools implements INode {
         this.version = 1.0
         this.type = 'Serper'
         this.icon = 'serper.png'
+        this.color = '#99FFCC'
         this.category = 'Tools'
         this.description = 'Wrapper around Serper.dev - Google Search API'
         this.inputs = []

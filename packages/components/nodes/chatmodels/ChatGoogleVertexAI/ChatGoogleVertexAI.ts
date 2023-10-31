@@ -11,6 +11,7 @@ class GoogleVertexAI_ChatModels implements INode {
     icon: string
     category: string
     description: string
+    color: string
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
@@ -21,6 +22,7 @@ class GoogleVertexAI_ChatModels implements INode {
         this.version = 1.0
         this.type = 'ChatGoogleVertexAI'
         this.icon = 'vertexai.svg'
+        this.color = '#FF6688'
         this.category = 'Chat Models'
         this.description = 'Wrapper around VertexAI large language models that use the Chat endpoint'
         this.baseClasses = [this.type, ...getBaseClasses(ChatGoogleVertexAI)]

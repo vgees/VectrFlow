@@ -14,6 +14,7 @@ class MRKLAgentChat_Agents implements INode {
     type: string
     icon: string
     category: string
+    color: string
     baseClasses: string[]
     inputs: INodeParams[]
 
@@ -22,6 +23,7 @@ class MRKLAgentChat_Agents implements INode {
         this.name = 'mrklAgentChat'
         this.version = 1.0
         this.type = 'AgentExecutor'
+        this.color = '#66B2FF'
         this.category = 'Agents'
         this.icon = 'agent.svg'
         this.description = 'Agent that uses the ReAct Framework to decide what action to take, optimized to be used with Chat Models'

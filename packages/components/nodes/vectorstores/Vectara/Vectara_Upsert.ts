@@ -12,6 +12,7 @@ class VectaraUpsert_VectorStores implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -25,6 +26,7 @@ class VectaraUpsert_VectorStores implements INode {
         this.type = 'Vectara'
         this.icon = 'vectara.png'
         this.category = 'Vector Stores'
+        this.color = '#FF99B2'
         this.description = 'Upsert documents to Vectara'
         this.baseClasses = [this.type, 'VectorStoreRetriever', 'BaseRetriever']
         this.credential = {

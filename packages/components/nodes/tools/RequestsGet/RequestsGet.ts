@@ -9,6 +9,7 @@ class RequestsGet_Tools implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -19,6 +20,7 @@ class RequestsGet_Tools implements INode {
         this.version = 1.0
         this.type = 'RequestsGet'
         this.icon = 'requestsget.svg'
+        this.color = '#99FFCC'
         this.category = 'Tools'
         this.description = 'Execute HTTP GET requests'
         this.baseClasses = [this.type, ...getBaseClasses(RequestsGetTool)]

@@ -15,6 +15,7 @@ class SupabaseUpsert_VectorStores implements INode {
     icon: string
     category: string
     baseClasses: string[]
+    color: string
     inputs: INodeParams[]
     credential: INodeParams
     outputs: INodeOutputsValue[]
@@ -26,6 +27,7 @@ class SupabaseUpsert_VectorStores implements INode {
         this.type = 'Supabase'
         this.icon = 'supabase.svg'
         this.category = 'Vector Stores'
+        this.color = '#FF99B2'
         this.description = 'Upsert documents to Supabase'
         this.baseClasses = [this.type, 'VectorStoreRetriever', 'BaseRetriever']
         this.credential = {

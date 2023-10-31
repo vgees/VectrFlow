@@ -13,6 +13,7 @@ class QdrantUpsert_VectorStores implements INode {
     label: string
     name: string
     version: number
+    color: string
     description: string
     type: string
     icon: string
@@ -26,6 +27,7 @@ class QdrantUpsert_VectorStores implements INode {
         this.label = 'Qdrant Upsert Document'
         this.name = 'qdrantUpsert'
         this.version = 1.0
+        this.color = '#FF99B2'
         this.type = 'Qdrant'
         this.icon = 'qdrant.png'
         this.category = 'Vector Stores'

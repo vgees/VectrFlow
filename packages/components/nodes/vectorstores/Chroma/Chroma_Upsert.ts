@@ -14,6 +14,7 @@ class ChromaUpsert_VectorStores implements INode {
     type: string
     icon: string
     category: string
+    color: string
     baseClasses: string[]
     inputs: INodeParams[]
     credential: INodeParams
@@ -25,6 +26,7 @@ class ChromaUpsert_VectorStores implements INode {
         this.version = 1.0
         this.type = 'Chroma'
         this.icon = 'chroma.svg'
+        this.color = '#FF99B2'
         this.category = 'Vector Stores'
         this.description = 'Upsert documents to Chroma'
         this.baseClasses = [this.type, 'VectorStoreRetriever', 'BaseRetriever']

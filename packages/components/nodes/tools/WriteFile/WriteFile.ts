@@ -12,6 +12,7 @@ class WriteFile_Tools implements INode {
     icon: string
     category: string
     baseClasses: string[]
+    color: string
     inputs: INodeParams[]
 
     constructor() {
@@ -20,6 +21,7 @@ class WriteFile_Tools implements INode {
         this.version = 1.0
         this.type = 'WriteFile'
         this.icon = 'writefile.svg'
+        this.color = '#99FFCC'
         this.category = 'Tools'
         this.description = 'Write file to disk'
         this.baseClasses = [this.type, 'Tool', ...getBaseClasses(WriteFileTool)]

@@ -12,12 +12,14 @@ class HtmlToMarkdownTextSplitter_TextSplitters implements INode {
     icon: string
     category: string
     baseClasses: string[]
+    color: string
     inputs: INodeParams[]
 
     constructor() {
         this.label = 'HtmlToMarkdown Text Splitter'
         this.name = 'htmlToMarkdownTextSplitter'
         this.version = 1.0
+        this.color = '#FF99CC'
         this.type = 'HtmlToMarkdownTextSplitter'
         this.icon = 'htmlToMarkdownTextSplitter.png'
         this.category = 'Text Splitters'

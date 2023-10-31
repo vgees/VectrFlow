@@ -11,6 +11,7 @@ class OpenSearch_Existing_VectorStores implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -21,6 +22,7 @@ class OpenSearch_Existing_VectorStores implements INode {
         this.name = 'openSearchExistingIndex'
         this.version = 1.0
         this.type = 'OpenSearch'
+        this.color = '#FF99B2'
         this.icon = 'opensearch.png'
         this.category = 'Vector Stores'
         this.description = 'Load existing index from OpenSearch (i.e: Document has been upserted)'

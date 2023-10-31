@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 import { useRef } from 'react'
-
 // material-ui
 import { useTheme } from '@mui/material/styles'
 import {
@@ -13,6 +12,7 @@ import {
     Divider,
     InputAdornment,
     List,
+    ListItemButton,
     ListItem,
     ListItemAvatar,
     ListItemText,
@@ -27,6 +27,7 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // project imports
+import MainCard from 'ui-component/cards/MainCard'
 
 // icons
 import { IconSearch, IconX } from '@tabler/icons'
@@ -211,7 +212,7 @@ const AddNodes = ({ nodesData, node }) => {
                                                 {nodes[category].map((node, index) => (
                                                     <div key={node.name} onDragStart={(event) => onDragStart(event, node)} draggable>
                                                         <ListItem
-                                                            alignItems='center'
+                                                            alignItems='flex-start'
                                                             sx={{
                                                                 cursor: 'move'
                                                             }}
@@ -237,11 +238,7 @@ const AddNodes = ({ nodesData, node }) => {
                                                                     />
                                                                 </div>
                                                             </ListItemAvatar>
-                                                            <ListItemText
-                                                                sx={{ ml: 1 }}
-                                                                primary={node.label}
-                                                                secondary={node.description}
-                                                            />
+                                                            <ListItemText sx={{ ml: 1 }} primary={node.label} title={node.description} />
                                                         </ListItem>
                                                         {index === nodes[category].length - 1 ? null : <Divider />}
                                                     </div>

@@ -12,6 +12,7 @@ class OpenSearchUpsert_VectorStores implements INode {
     version: number
     description: string
     type: string
+    color: string
     icon: string
     category: string
     baseClasses: string[]
@@ -24,6 +25,7 @@ class OpenSearchUpsert_VectorStores implements INode {
         this.version = 1.0
         this.type = 'OpenSearch'
         this.icon = 'opensearch.png'
+        this.color = '#FF99B2'
         this.category = 'Vector Stores'
         this.description = 'Upsert documents to OpenSearch'
         this.baseClasses = [this.type, 'VectorStoreRetriever', 'BaseRetriever']

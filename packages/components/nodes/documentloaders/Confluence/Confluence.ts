@@ -11,6 +11,7 @@ class Confluence_DocumentLoaders implements INode {
     type: string
     icon: string
     category: string
+    color: string
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
@@ -21,6 +22,7 @@ class Confluence_DocumentLoaders implements INode {
         this.version = 1.0
         this.type = 'Document'
         this.icon = 'confluence.png'
+        this.color = '#CC99FF'
         this.category = 'Document Loaders'
         this.description = `Load data from a Confluence Document`
         this.baseClasses = [this.type]

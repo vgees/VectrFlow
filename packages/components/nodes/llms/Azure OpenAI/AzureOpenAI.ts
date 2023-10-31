@@ -10,6 +10,7 @@ class AzureOpenAI_LLMs implements INode {
     icon: string
     category: string
     description: string
+    color: string
     baseClasses: string[]
     credential: INodeParams
     inputs: INodeParams[]
@@ -20,6 +21,7 @@ class AzureOpenAI_LLMs implements INode {
         this.version = 1.0
         this.type = 'AzureOpenAI'
         this.icon = 'Azure.svg'
+        this.color = '#B2B2B2'
         this.category = 'LLMs'
         this.description = 'Wrapper around Azure OpenAI large language models'
         this.baseClasses = [this.type, ...getBaseClasses(OpenAI)]

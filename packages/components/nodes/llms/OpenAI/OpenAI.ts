@@ -9,6 +9,7 @@ class OpenAI_LLMs implements INode {
     type: string
     icon: string
     category: string
+    color: string
     description: string
     baseClasses: string[]
     credential: INodeParams
@@ -21,6 +22,7 @@ class OpenAI_LLMs implements INode {
         this.type = 'OpenAI'
         this.icon = 'openai.png'
         this.category = 'LLMs'
+        this.color = '#B2B2B2'
         this.description = 'Wrapper around OpenAI large language models'
         this.baseClasses = [this.type, ...getBaseClasses(OpenAI)]
         this.credential = {

@@ -10,6 +10,7 @@ class CharacterTextSplitter_TextSplitters implements INode {
     type: string
     icon: string
     category: string
+    color: string
     baseClasses: string[]
     inputs: INodeParams[]
 
@@ -20,6 +21,7 @@ class CharacterTextSplitter_TextSplitters implements INode {
         this.type = 'CharacterTextSplitter'
         this.icon = 'textsplitter.png'
         this.category = 'Text Splitters'
+        this.color = '#FF99CC'
         this.description = `splits only on one type of character (defaults to "\\n\\n").`
         this.baseClasses = [this.type, ...getBaseClasses(CharacterTextSplitter)]
         this.inputs = [

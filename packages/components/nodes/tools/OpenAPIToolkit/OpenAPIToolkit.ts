@@ -12,6 +12,7 @@ class OpenAPIToolkit_Tools implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     credential: INodeParams
@@ -22,6 +23,7 @@ class OpenAPIToolkit_Tools implements INode {
         this.name = 'openAPIToolkit'
         this.version = 1.0
         this.type = 'OpenAPIToolkit'
+        this.color = '#99FFCC'
         this.icon = 'openapi.png'
         this.category = 'Tools'
         this.description = 'Load OpenAPI specification'

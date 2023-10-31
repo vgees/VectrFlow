@@ -9,6 +9,7 @@ class Csv_DocumentLoaders implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -20,6 +21,7 @@ class Csv_DocumentLoaders implements INode {
         this.type = 'Document'
         this.icon = 'Csv.png'
         this.category = 'Document Loaders'
+        this.color = '#CC99FF'
         this.description = `Load data from CSV files`
         this.baseClasses = [this.type]
         this.inputs = [

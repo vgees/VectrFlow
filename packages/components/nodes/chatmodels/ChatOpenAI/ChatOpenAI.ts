@@ -9,6 +9,7 @@ class ChatOpenAI_ChatModels implements INode {
     type: string
     icon: string
     category: string
+    color: string
     description: string
     baseClasses: string[]
     credential: INodeParams
@@ -20,6 +21,7 @@ class ChatOpenAI_ChatModels implements INode {
         this.version = 1.0
         this.type = 'ChatOpenAI'
         this.icon = 'openai.png'
+        this.color = '#FF6688'
         this.category = 'Chat Models'
         this.description = 'Wrapper around OpenAI large language models that use the Chat endpoint'
         this.baseClasses = [this.type, ...getBaseClasses(ChatOpenAI)]

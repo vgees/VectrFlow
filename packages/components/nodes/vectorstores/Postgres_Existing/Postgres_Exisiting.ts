@@ -13,6 +13,7 @@ class Postgres_Existing_VectorStores implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -25,6 +26,7 @@ class Postgres_Existing_VectorStores implements INode {
         this.version = 1.0
         this.type = 'Postgres'
         this.icon = 'postgres.svg'
+        this.color = '#FF99B2'
         this.category = 'Vector Stores'
         this.description = 'Load existing index from Postgres using pgvector (i.e: Document has been upserted)'
         this.baseClasses = [this.type, 'VectorStoreRetriever', 'BaseRetriever']

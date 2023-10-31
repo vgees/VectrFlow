@@ -18,6 +18,7 @@ import NodeInfoDialog from 'ui-component/dialog/NodeInfoDialog'
 import { baseURL } from 'store/constant'
 import { IconTrash, IconCopy, IconInfoCircle, IconAlertTriangle } from '@tabler/icons'
 import { flowContext } from 'store/context/ReactFlowContext'
+import { NodeToolbar } from 'reactflow'
 
 const CardWrapper = styled(MainCard)(({ theme }) => ({
     background: theme.palette.card.main,
@@ -63,6 +64,35 @@ const CanvasNode = ({ data }) => {
         setOpen(true)
     }
 
+    const NodeBorder = () => {
+        if (data.category == 'Agents') {
+            return '#0066CC'
+        } else if (data.category == 'Chains') {
+            return '#009966'
+        } else if (data.category == 'Chat Models') {
+            return '#CC0033'
+        } else if (data.category == 'Document Loaders') {
+            return '#9933CC'
+        } else if (data.category == 'Embeddings') {
+            return '#9933CC'
+        } else if (data.category == 'LLMs') {
+            return '#333333'
+        } else if (data.category == 'Memory') {
+            return '#999999'
+        } else if (data.category == 'Prompts') {
+            return '#33CCCC'
+        } else if (data.category == 'Retrievers') {
+            return '#FF9933'
+        } else if (data.category == 'Text Splitters') {
+            return '#FF66B2'
+        } else if (data.category == 'Tools') {
+            return '#33CC99'
+        } else if (data.category == 'Vector stores') {
+            return '#990033'
+        }
+        return '#000000'
+    }
+
     const nodeOutdatedMessage = (oldVersion, newVersion) => `Node version ${oldVersion} outdated\nUpdate to latest version ${newVersion}`
 
     const nodeVersionEmptyMessage = (newVersion) => `Node outdated\nUpdate to latest version ${newVersion}`
@@ -95,7 +125,7 @@ const CanvasNode = ({ data }) => {
                 content={false}
                 sx={{
                     padding: 0,
-                    borderColor: data.selected ? '#EC73FF' : '#2F5597' //theme.palette.primary.main : theme.palette.text.secondary
+                    borderColor: data.selected ? `${data.color}` : NodeBorder
                 }}
                 border={false}
             >
@@ -148,14 +178,14 @@ const CanvasNode = ({ data }) => {
                     placement='right-start'
                 >
                     <Box>
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', backgroundColor: `${data.color}` }}>
                             <Box style={{ width: 50, marginRight: 10, padding: 5 }}>
                                 <div
                                     style={{
                                         ...theme.typography.commonAvatar,
                                         ...theme.typography.largeAvatar,
                                         borderRadius: '50%',
-                                        backgroundColor: 'white',
+                                        backgroundColor: `${data.color}`,
                                         cursor: 'grab'
                                     }}
                                 >
@@ -170,8 +200,10 @@ const CanvasNode = ({ data }) => {
                                 <Typography
                                     sx={{
                                         fontSize: '1rem',
+                                        font: 'Helvetica Neue',
                                         fontWeight: 500,
-                                        mr: 2
+                                        mr: 2,
+                                        color: '#000000'
                                     }}
                                 >
                                     {data.label}
@@ -195,7 +227,8 @@ const CanvasNode = ({ data }) => {
                                     <Typography
                                         sx={{
                                             fontWeight: 500,
-                                            textAlign: 'center'
+                                            textAlign: 'center',
+                                            color: '#2F5597'
                                         }}
                                     >
                                         Inputs
@@ -231,7 +264,8 @@ const CanvasNode = ({ data }) => {
                             <Typography
                                 sx={{
                                     fontWeight: 500,
-                                    textAlign: 'center'
+                                    textAlign: 'center',
+                                    color: '#EC73FF'
                                 }}
                             >
                                 Output

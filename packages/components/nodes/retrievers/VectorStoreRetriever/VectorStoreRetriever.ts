@@ -8,6 +8,7 @@ class VectorStoreRetriever_Retrievers implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -17,6 +18,7 @@ class VectorStoreRetriever_Retrievers implements INode {
         this.name = 'vectorStoreRetriever'
         this.version = 1.0
         this.type = 'VectorStoreRetriever'
+        this.color = '#FFCC99'
         this.icon = 'vectorretriever.svg'
         this.category = 'Retrievers'
         this.description = 'Store vector store as retriever to be later queried by MultiRetrievalQAChain'

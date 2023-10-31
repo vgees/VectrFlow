@@ -12,6 +12,7 @@ class MRKLAgentLLM_Agents implements INode {
     version: number
     description: string
     type: string
+    color: string
     icon: string
     category: string
     baseClasses: string[]
@@ -22,6 +23,7 @@ class MRKLAgentLLM_Agents implements INode {
         this.name = 'mrklAgentLLM'
         this.version = 1.0
         this.type = 'AgentExecutor'
+        this.color = '#66B2FF'
         this.category = 'Agents'
         this.icon = 'agent.svg'
         this.description = 'Agent that uses the ReAct Framework to decide what action to take, optimized to be used with LLMs'

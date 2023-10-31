@@ -10,6 +10,7 @@ class ZapierNLA_Tools implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -21,6 +22,7 @@ class ZapierNLA_Tools implements INode {
         this.version = 1.0
         this.type = 'ZapierNLA'
         this.icon = 'zapier.svg'
+        this.color = '#99FFCC'
         this.category = 'Tools'
         this.description = "Access to apps and actions on Zapier's platform through a natural language API interface"
         this.inputs = []

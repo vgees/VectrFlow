@@ -12,6 +12,7 @@ class HydeRetriever_Retrievers implements INode {
     type: string
     icon: string
     category: string
+    color: string
     baseClasses: string[]
     inputs: INodeParams[]
 
@@ -20,6 +21,7 @@ class HydeRetriever_Retrievers implements INode {
         this.name = 'HydeRetriever'
         this.version = 1.0
         this.type = 'HydeRetriever'
+        this.color = '#FFCC99'
         this.icon = 'hyderetriever.svg'
         this.category = 'Retrievers'
         this.description = 'Use HyDE retriever to retrieve from a vector store'

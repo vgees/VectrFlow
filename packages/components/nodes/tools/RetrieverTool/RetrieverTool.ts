@@ -11,6 +11,7 @@ class Retriever_Tools implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     credential: INodeParams
@@ -21,6 +22,7 @@ class Retriever_Tools implements INode {
         this.name = 'retrieverTool'
         this.version = 1.0
         this.type = 'RetrieverTool'
+        this.color = '#99FFCC'
         this.icon = 'retriever-tool.png'
         this.category = 'Tools'
         this.description = 'Use a retriever as allowed tool for agent'

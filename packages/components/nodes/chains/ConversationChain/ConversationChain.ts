@@ -14,6 +14,7 @@ class ConversationChain_Chains implements INode {
     label: string
     name: string
     version: number
+    color: string
     type: string
     icon: string
     category: string
@@ -24,6 +25,7 @@ class ConversationChain_Chains implements INode {
     constructor() {
         this.label = 'Conversation Chain'
         this.name = 'conversationChain'
+        this.color = '#66FFB2'
         this.version = 1.0
         this.type = 'ConversationChain'
         this.icon = 'chain.png'

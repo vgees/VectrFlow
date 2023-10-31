@@ -9,6 +9,7 @@ class LLMChain_Chains implements INode {
     name: string
     version: number
     type: string
+    color: string
     icon: string
     category: string
     baseClasses: string[]
@@ -22,6 +23,7 @@ class LLMChain_Chains implements INode {
         this.version = 1.0
         this.type = 'LLMChain'
         this.icon = 'chain.png'
+        this.color = '#66FFB2'
         this.category = 'Chains'
         this.description = 'Chain to run queries against LLMs'
         this.baseClasses = [this.type, ...getBaseClasses(LLMChain)]

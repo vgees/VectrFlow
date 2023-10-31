@@ -8,6 +8,7 @@ class NotionFolder_DocumentLoaders implements INode {
     version: number
     description: string
     type: string
+    color: string
     icon: string
     category: string
     baseClasses: string[]
@@ -18,6 +19,7 @@ class NotionFolder_DocumentLoaders implements INode {
         this.name = 'notionFolder'
         this.version = 1.0
         this.type = 'Document'
+        this.color = '#CC99FF'
         this.icon = 'notion.png'
         this.category = 'Document Loaders'
         this.description = 'Load data from the exported and unzipped Notion folder'

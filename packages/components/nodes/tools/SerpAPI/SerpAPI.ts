@@ -9,6 +9,7 @@ class SerpAPI_Tools implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     credential: INodeParams
@@ -20,6 +21,7 @@ class SerpAPI_Tools implements INode {
         this.version = 1.0
         this.type = 'SerpAPI'
         this.icon = 'serp.png'
+        this.color = '#99FFCC'
         this.category = 'Tools'
         this.description = 'Wrapper around SerpAPI - a real-time API to access Google search results'
         this.inputs = []

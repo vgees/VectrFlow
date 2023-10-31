@@ -8,6 +8,7 @@ class DynamoDb_Memory implements INode {
     version: number
     description: string
     type: string
+    color: string
     icon: string
     category: string
     baseClasses: string[]
@@ -19,6 +20,7 @@ class DynamoDb_Memory implements INode {
         this.name = 'DynamoDBChatMemory'
         this.version = 1.0
         this.type = 'DynamoDBChatMemory'
+        this.color = '#D9D9D9'
         this.icon = 'dynamodb.svg'
         this.category = 'Memory'
         this.description = 'Stores the conversation in dynamo db table'

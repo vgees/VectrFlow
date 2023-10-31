@@ -10,6 +10,7 @@ class ReadFile_Tools implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     inputs: INodeParams[]
@@ -20,6 +21,7 @@ class ReadFile_Tools implements INode {
         this.version = 1.0
         this.type = 'ReadFile'
         this.icon = 'readfile.svg'
+        this.color = '#99FFCC'
         this.category = 'Tools'
         this.description = 'Read file from disk'
         this.baseClasses = [this.type, 'Tool', ...getBaseClasses(ReadFileTool)]

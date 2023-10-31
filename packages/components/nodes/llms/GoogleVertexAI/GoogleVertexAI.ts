@@ -8,6 +8,7 @@ class GoogleVertexAI_LLMs implements INode {
     name: string
     version: number
     type: string
+    color: string
     icon: string
     category: string
     description: string
@@ -20,6 +21,7 @@ class GoogleVertexAI_LLMs implements INode {
         this.name = 'googlevertexai'
         this.version = 1.0
         this.type = 'GoogleVertexAI'
+        this.color = '#B2B2B2'
         this.icon = 'vertexai.svg'
         this.category = 'LLMs'
         this.description = 'Wrapper around GoogleVertexAI large language models'

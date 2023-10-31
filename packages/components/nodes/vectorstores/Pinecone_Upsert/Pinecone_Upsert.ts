@@ -14,6 +14,7 @@ class PineconeUpsert_VectorStores implements INode {
     type: string
     icon: string
     category: string
+    color: string
     baseClasses: string[]
     inputs: INodeParams[]
     credential: INodeParams
@@ -23,6 +24,7 @@ class PineconeUpsert_VectorStores implements INode {
         this.label = 'Pinecone Upsert Document'
         this.name = 'pineconeUpsert'
         this.version = 1.0
+        this.color = '#FF99B2'
         this.type = 'Pinecone'
         this.icon = 'pinecone.png'
         this.category = 'Vector Stores'

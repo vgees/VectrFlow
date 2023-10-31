@@ -1,6 +1,8 @@
+import { load } from 'js-yaml'
 import { ICommonObject, INode, INodeData, INodeParams } from '../../../src/Interface'
 import { AzureBlobStorageFileLoader } from 'langchain/document_loaders/web/azure_blob_storage_file'
 import { TextSplitter } from 'langchain/text_splitter'
+import { getCredentialData, getCredentialParam } from '../../../src/utils'
 class AzureBlobStorage_DocumentLoaders implements INode {
     label: string
     name: string
@@ -8,6 +10,7 @@ class AzureBlobStorage_DocumentLoaders implements INode {
     description: string
     type: string
     icon: string
+    color: string
     category: string
     baseClasses: string[]
     credential: INodeParams
@@ -18,16 +21,18 @@ class AzureBlobStorage_DocumentLoaders implements INode {
         this.name = 'AzureBlobStorage'
         this.version = 1.0
         this.type = 'Document'
+        this.color = '#CC99FF'
         this.icon = 'azureblobstorage.png'
         this.category = 'Document Loaders'
         this.description = 'Load Data from Azure Blob Storage'
         this.baseClasses = [this.type]
+        this.credential = {
+            label: 'Azure Credential',
+            name: 'credential',
+            type: 'credential',
+            credentialNames: ['AzureApi']
+        }
         this.inputs = [
-            {
-                label: 'Connection String',
-                name: 'ConnectionString',
-                type: 'string'
-            },
             {
                 label: 'Container Name',
                 name: 'ContainerName',
@@ -48,7 +53,8 @@ class AzureBlobStorage_DocumentLoaders implements INode {
             {
                 label: 'NarrativeText Only',
                 name: 'narrativeTextOnly',
-                description: 'Only load documents with NarrativeText metadata from Unstructured',
+                description:
+                    'Only load documents with NarrativeText metadata from Unstructured',
                 type: 'boolean',
                 optional: true,
                 additionalParams: true
@@ -62,15 +68,17 @@ class AzureBlobStorage_DocumentLoaders implements INode {
             }
         ]
     }
-    async init(nodeData: INodeData, _: string, _options: ICommonObject): Promise<any> {
-        const constring = nodeData.inputs?.ConnectionString as string
+    async init(nodeData: INodeData, _: string, options: ICommonObject): Promise<any> {
+        //const constring = nodeData.inputs?.ConnectionString as string
         const contname = nodeData.inputs?.ContainerName as string
         const Blobname1 = nodeData.inputs?.BlobName as string
-        const textSplitter = nodeData.inputs?.textSplitter as TextSplitter
-        const metadata = nodeData.inputs?.metadata1
+        const textSplitter = nodeData.inputs?.textSplitter as TextSplitter;
+        const metadata = nodeData.inputs?.metadata1;
         const narrativeTextOnly = nodeData.inputs?.narrativeTextOnly as boolean
-        try {
-            if (constring && contname && Blobname1) {
+        const credentialData = await getCredentialData(nodeData.credential ?? '', options)
+        const constring = getCredentialParam('connectionstring', credentialData, nodeData)
+        try{
+            if (constring && contname && Blobname1){
                 const loader = new AzureBlobStorageFileLoader({
                     azureConfig: {
                         connectionString: constring,
@@ -83,7 +91,7 @@ class AzureBlobStorage_DocumentLoaders implements INode {
                     }
                 })
                 if (textSplitter) {
-                    try {
+                    try{
                         const docs = await loader.loadAndSplit(textSplitter)
                         if (metadata) {
                             const parsedMetadata = typeof metadata === 'object' ? metadata : JSON.parse(metadata)
@@ -94,17 +102,21 @@ class AzureBlobStorage_DocumentLoaders implements INode {
                                         ...doc.metadata,
                                         ...parsedMetadata
                                     }
-                                }
+                                } 
                             })
                             return narrativeTextOnly ? finaldocs.filter((doc) => doc.metadata.category === 'NarrativeText') : finaldocs
                         }
                         return narrativeTextOnly ? docs.filter((doc) => doc.metadata.category === 'NarrativeText') : docs
-                    } catch (e: any) {
+                    }
+                    catch(e:any){
                         throw new Error(`${e}`)
                     }
-                } else {
-                    try {
-                        const docs = await loader.load()
+                        
+        
+                        }
+                else{
+                    try{
+                        const docs = await loader.load();
                         if (metadata) {
                             const parsedMetadata = typeof metadata === 'object' ? metadata : JSON.parse(metadata)
                             const finaldocs = docs.map((doc) => {
@@ -119,16 +131,19 @@ class AzureBlobStorage_DocumentLoaders implements INode {
                             return narrativeTextOnly ? finaldocs.filter((doc) => doc.metadata.category === 'NarrativeText') : finaldocs
                         }
                         return narrativeTextOnly ? docs.filter((doc) => doc.metadata.category === 'NarrativeText') : docs
-                    } catch (e: any) {
+                    }
+                    catch(e:any){
                         throw new Error(`${e}`)
                     }
                 }
             } else {
                 console.error('Some required properties are undefined.')
             }
-        } catch (error) {
+        }
+        catch (error) {
             console.error('An error occurred:', error)
-            throw error
+            throw error; 
+            
         }
     }
 }

@@ -12,6 +12,7 @@ class GoogleVertexAIEmbedding_Embeddings implements INode {
     category: string
     description: string
     baseClasses: string[]
+    color: string
     credential: INodeParams
     inputs: INodeParams[]
 
@@ -21,6 +22,7 @@ class GoogleVertexAIEmbedding_Embeddings implements INode {
         this.version = 1.0
         this.type = 'GoogleVertexAIEmbeddings'
         this.icon = 'vertexai.svg'
+        this.color = '#FFFF99'
         this.category = 'Embeddings'
         this.description = 'Google vertexAI API to generate embeddings for a given text'
         this.baseClasses = [this.type, ...getBaseClasses(GoogleVertexAIEmbeddings)]

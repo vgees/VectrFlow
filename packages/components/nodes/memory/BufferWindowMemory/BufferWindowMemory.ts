@@ -8,6 +8,7 @@ class BufferWindowMemory_Memory implements INode {
     version: number
     description: string
     type: string
+    color: string
     icon: string
     category: string
     baseClasses: string[]
@@ -18,6 +19,7 @@ class BufferWindowMemory_Memory implements INode {
         this.name = 'bufferWindowMemory'
         this.version = 1.0
         this.type = 'BufferWindowMemory'
+        this.color = '#D9D9D9'
         this.icon = 'memory.png'
         this.category = 'Memory'
         this.description = 'Uses a window of size k to surface the last k back-and-forths to use as memory'

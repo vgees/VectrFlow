@@ -12,6 +12,7 @@ class GooglePaLM_LLMs implements INode {
     description: string
     baseClasses: string[]
     credential: INodeParams
+    color: string
     inputs: INodeParams[]
 
     constructor() {
@@ -20,6 +21,7 @@ class GooglePaLM_LLMs implements INode {
         this.version = 1.0
         this.type = 'GooglePaLM'
         this.icon = 'Google_PaLM_Logo.svg'
+        this.color = '#B2B2B2'
         this.category = 'LLMs'
         this.description = 'Wrapper around Google MakerSuite PaLM large language models'
         this.baseClasses = [this.type, ...getBaseClasses(GooglePaLM)]

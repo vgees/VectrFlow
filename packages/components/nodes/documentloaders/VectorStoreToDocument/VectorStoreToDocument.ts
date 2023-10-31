@@ -11,12 +11,14 @@ class VectorStoreToDocument_DocumentLoaders implements INode {
     icon: string
     category: string
     baseClasses: string[]
+    color: string
     inputs: INodeParams[]
     outputs: INodeOutputsValue[]
 
     constructor() {
         this.label = 'VectorStore To Document'
         this.name = 'vectorStoreToDocument'
+        this.color = '#CC99FF'
         this.version = 1.0
         this.type = 'Document'
         this.icon = 'vectorretriever.svg'

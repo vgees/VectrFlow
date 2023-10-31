@@ -11,6 +11,7 @@ class Folder_DocumentLoaders implements INode {
     label: string
     name: string
     version: number
+    color: string
     description: string
     type: string
     icon: string
@@ -23,6 +24,7 @@ class Folder_DocumentLoaders implements INode {
         this.name = 'folderFiles'
         this.version = 1.0
         this.type = 'Document'
+        this.color = '#CC99FF'
         this.icon = 'folder.svg'
         this.category = 'Document Loaders'
         this.description = `Load data from folder with multiple files`

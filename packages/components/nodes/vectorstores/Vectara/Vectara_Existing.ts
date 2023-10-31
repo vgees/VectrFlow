@@ -11,6 +11,7 @@ class VectaraExisting_VectorStores implements INode {
     icon: string
     category: string
     baseClasses: string[]
+    color: string
     inputs: INodeParams[]
     credential: INodeParams
     outputs: INodeOutputsValue[]
@@ -20,6 +21,7 @@ class VectaraExisting_VectorStores implements INode {
         this.name = 'vectaraExistingIndex'
         this.version = 1.0
         this.type = 'Vectara'
+        this.color = '#FF99B2'
         this.icon = 'vectara.png'
         this.category = 'Vector Stores'
         this.description = 'Load existing index from Vectara (i.e: Document has been upserted)'

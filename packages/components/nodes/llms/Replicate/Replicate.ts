@@ -1,6 +1,8 @@
 import { ICommonObject, INode, INodeData, INodeParams } from '../../../src/Interface'
 import { getBaseClasses, getCredentialData, getCredentialParam } from '../../../src/utils'
 import { Replicate, ReplicateInput } from 'langchain/llms/replicate'
+import { BaseCache } from 'langchain/schema'
+import { BaseLLMParams } from 'langchain/llms/base'
 
 class Replicate_LLMs implements INode {
     label: string
@@ -9,6 +11,7 @@ class Replicate_LLMs implements INode {
     type: string
     icon: string
     category: string
+    color: string
     description: string
     baseClasses: string[]
     credential: INodeParams
@@ -17,8 +20,9 @@ class Replicate_LLMs implements INode {
     constructor() {
         this.label = 'Replicate'
         this.name = 'replicate'
-        this.version = 1.0
+        this.version = 2.0
         this.type = 'Replicate'
+        this.color = '#B2B2B2'
         this.icon = 'replicate.svg'
         this.category = 'LLMs'
         this.description = 'Use Replicate to run open source models on cloud'
@@ -30,6 +34,12 @@ class Replicate_LLMs implements INode {
             credentialNames: ['replicateApi']
         }
         this.inputs = [
+            {
+                label: 'Cache',
+                name: 'cache',
+                type: 'BaseCache',
+                optional: true
+            },
             {
                 label: 'Model',
                 name: 'model',
@@ -103,7 +113,9 @@ class Replicate_LLMs implements INode {
         const name = modelName.split(':')[0].split('/').pop()
         const org = modelName.split(':')[0].split('/')[0]
 
-        const obj: ReplicateInput = {
+        const cache = nodeData.inputs?.cache as BaseCache
+
+        const obj: ReplicateInput & BaseLLMParams = {
             model: `${org}/${name}:${version}`,
             apiKey
         }
@@ -119,6 +131,8 @@ class Replicate_LLMs implements INode {
             inputs = { ...inputs, ...parsedInputs }
         }
         if (Object.keys(inputs).length) obj.input = inputs
+
+        if (cache) obj.cache = cache
 
         const model = new Replicate(obj)
         return model
