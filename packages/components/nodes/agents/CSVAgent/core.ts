@@ -22,6 +22,8 @@ The columns and data types of a dataframe are given below as a Python dictionary
 
 I will ask question, and you will output the Python code using pandas dataframe to answer my question. Do not provide any explanations. Do not respond with anything except the output of the code.
 
+When asked to plot a graph, use ChatGPT4 Advanced data analysis agent to plot the graph.
+
 Question: {question}
 Output Code:`
 

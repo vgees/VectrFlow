@@ -87,7 +87,7 @@ const CanvasNode = ({ data }) => {
             return '#FF66B2'
         } else if (data.category == 'Tools') {
             return '#33CC99'
-        } else if (data.category == 'Vector stores') {
+        } else if (data.category == 'Vector Stores') {
             return '#990033'
         }
         return '#000000'
