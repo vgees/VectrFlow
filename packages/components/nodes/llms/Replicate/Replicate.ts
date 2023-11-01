@@ -11,7 +11,6 @@ class Replicate_LLMs implements INode {
     type: string
     icon: string
     category: string
-    color: string
     description: string
     baseClasses: string[]
     credential: INodeParams
@@ -22,7 +21,6 @@ class Replicate_LLMs implements INode {
         this.name = 'replicate'
         this.version = 2.0
         this.type = 'Replicate'
-        this.color = '#B2B2B2'
         this.icon = 'replicate.svg'
         this.category = 'LLMs'
         this.description = 'Use Replicate to run open source models on cloud'

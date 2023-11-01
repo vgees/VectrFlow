@@ -8,7 +8,6 @@ class Pdf_DocumentLoaders implements INode {
     version: number
     description: string
     type: string
-    color: string
     icon: string
     category: string
     baseClasses: string[]
@@ -20,7 +19,6 @@ class Pdf_DocumentLoaders implements INode {
         this.version = 1.0
         this.type = 'Document'
         this.icon = 'pdf.svg'
-        this.color = '#CC99FF'
         this.category = 'Document Loaders'
         this.description = `Load data from PDF files`
         this.baseClasses = [this.type]
