@@ -21,7 +21,7 @@ class S3_DocumentLoaders implements INode {
         this.name = 'S3'
         this.version = 1.0
         this.type = 'Document'
-        this.icon = 'S3.png'
+        this.icon = 's3.png'
         this.category = 'Document Loaders'
         this.color = '#CC99FF'
         this.description = 'Load Data from S3 Buckets'
