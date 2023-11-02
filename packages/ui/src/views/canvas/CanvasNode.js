@@ -87,8 +87,37 @@ const CanvasNode = ({ data }) => {
             return '#FF66B2'
         } else if (data.category == 'Tools') {
             return '#33CC99'
-        } else if (data.category == 'Vector stores') {
+        } else if (data.category == 'Vector Stores') {
             return '#990033'
+        }
+        return '#000000'
+    }
+
+    const NodeHeader = () => {
+        if (data.category == 'Agents') {
+            return ' #66B2FF'
+        } else if (data.category == 'Chains') {
+            return '#66FFB2'
+        } else if (data.category == 'Chat Models') {
+            return '#FF6688'
+        } else if (data.category == 'Document Loaders') {
+            return '#CC99FF'
+        } else if (data.category == 'Embeddings') {
+            return '#FFFF99'
+        } else if (data.category == 'LLMs') {
+            return '#B2B2B2'
+        } else if (data.category == 'Memory') {
+            return '#D9D9D9'
+        } else if (data.category == 'Prompts') {
+            return '#99E6E6'
+        } else if (data.category == 'Retrievers') {
+            return '#FFCC99'
+        } else if (data.category == 'Text Splitters') {
+            return '#FF99CC'
+        } else if (data.category == 'Tools') {
+            return '#99FFCC'
+        } else if (data.category == 'Vector Stores') {
+            return '#FF99B2'
         }
         return '#000000'
     }
@@ -125,7 +154,7 @@ const CanvasNode = ({ data }) => {
                 content={false}
                 sx={{
                     padding: 0,
-                    borderColor: data.selected ? `${data.color}` : NodeBorder
+                    borderColor: data.selected ? NodeHeader : NodeBorder
                 }}
                 border={false}
             >
@@ -178,14 +207,14 @@ const CanvasNode = ({ data }) => {
                     placement='right-start'
                 >
                     <Box>
-                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', backgroundColor: `${data.color}` }}>
+                        <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', backgroundColor: NodeHeader }}>
                             <Box style={{ width: 50, marginRight: 10, padding: 5 }}>
                                 <div
                                     style={{
                                         ...theme.typography.commonAvatar,
                                         ...theme.typography.largeAvatar,
                                         borderRadius: '50%',
-                                        backgroundColor: `${data.color}`,
+                                        backgroundColor: NodeHeader,
                                         cursor: 'grab'
                                     }}
                                 >
