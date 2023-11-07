@@ -1,9 +1,9 @@
 version: 1.0
-runtime: nodejs18
+runtime: nodejs16
 build:
   commands:
     pre-build:
-      - n 18.17.1
+      - n 16.17.0
     build:      
       -  yarn install
       - yarn build
