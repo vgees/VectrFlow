@@ -1,5 +1,5 @@
 {
-    "name": "flowise-components",
+    "name": "vectrflow-components",
     "version": "0.0.1",
     "description": "VectrFlow Components",
     "main": "dist/src/index",

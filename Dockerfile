@@ -2,7 +2,7 @@
 # docker build --no-cache -t  vectrflow .
 
 # Run image
-# docker run -d -p 3000:3000 vectrflow
+# docker run -d -p 8080:8080 vectrflow
 
 FROM node:18-alpine
 RUN apk add --update libc6-compat python3 make g++
