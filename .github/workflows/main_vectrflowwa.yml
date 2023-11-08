@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy VectrFlow App to Azure Web App - vectrflowWA
+name: Build and deploy Node.js app to Azure Web App - vectrflowWA
 
 on:
   push:
@@ -12,8 +12,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-            CI: false
+
     steps:
       - uses: actions/checkout@v4
 
@@ -22,10 +21,11 @@ jobs:
         with:
           node-version: '18.x'
 
-      - name: yarn install, build, and test
+      - name: npm install, build, and test
         run: |
-          yarn install
-          yarn build
+          npm install
+          npm run build --if-present
+          npm run test --if-present
 
       - name: Zip artifact for deployment
         run: zip release.zip ./* -r
@@ -58,5 +58,5 @@ jobs:
         with:
           app-name: 'vectrflowWA'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0516E8A74CC646CA8063F1F67AFBF338 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6E7587803A054B3183A33B66DD415AD5 }}
           package: .
