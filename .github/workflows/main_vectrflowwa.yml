@@ -58,5 +58,5 @@ jobs:
         with:
           app-name: 'vectrflowWA'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6E7587803A054B3183A33B66DD415AD5 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_807BF0808DB1422D9005E8081933D079 }}
           package: .
