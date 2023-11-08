@@ -15,7 +15,7 @@
         "dev": "turbo run dev --parallel",
         "start": "run-script-os",
         "start:windows": "cd packages/server/bin && run start",
-        "start:default": "cd packages/server/bin && ./run start",
+        "start:default": "/node_modules/.bin/run-script-os start",
         "clean": "npm exec -ws -- rimraf dist build",
         "format": "prettier --write \"**/*.{ts,tsx,md}\"",
         "test": "turbo run test",
