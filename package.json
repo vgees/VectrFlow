@@ -2,7 +2,7 @@
     "name": "flowise",
     "version": "0.0.1",
     "private": true,
-    "homepage": "https://vectflow.com",
+    "homepage": "https://vectrflow.com",
     "workspaces": [
         "packages/*",
         "flowise",
