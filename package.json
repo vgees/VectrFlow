@@ -2,7 +2,7 @@
     "name": "flowise",
     "version": "0.0.1",
     "private": true,
-    "homepage": "https://vectflow.com",
+    "homepage": "https://vectrflow.com",
     "workspaces": [
         "packages/*",
         "flowise",
@@ -15,7 +15,7 @@
         "dev": "turbo run dev --parallel",
         "start": "run-script-os",
         "start:windows": "cd packages/server/bin && run start",
-        "start:default": "/node_modules/.bin/run-script-os start",
+        "start:default": "cd packages/server/bin && ./run start",
         "clean": "npm exec -ws -- rimraf dist build",
         "format": "prettier --write \"**/*.{ts,tsx,md}\"",
         "test": "turbo run test",
