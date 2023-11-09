@@ -1,4 +1,4 @@
-import { ICommonObject, INode, INodeData, INodeOutputsValue, INodeParams } from '../../../src/Interface'
+/*import { ICommonObject, INode, INodeData, INodeOutputsValue, INodeParams } from '../../../src/Interface'
 import { DataType, ErrorCode, MetricType, IndexType } from '@zilliz/milvus2-sdk-node'
 import { MilvusLibArgs, Milvus } from 'langchain/vectorstores/milvus'
 import { Embeddings } from 'langchain/embeddings/base'
@@ -278,4 +278,4 @@ class MilvusUpsert extends Milvus {
     }
 }
 
-module.exports = { nodeClass: Milvus_Upsert_VectorStores }
+module.exports = { nodeClass: Milvus_Upsert_VectorStores }*/
