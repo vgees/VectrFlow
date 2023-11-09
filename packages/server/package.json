@@ -1,5 +1,5 @@
 {
-    "name": "vectrflow",
+    "name": "flowise",
     "version": "0.0.1",
     "description": "VectrFlow Server",
     "main": "dist/index",
