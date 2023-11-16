@@ -26,7 +26,7 @@ class ConversationalRetrievalAgent_Agents implements INode {
         this.type = 'AgentExecutor'
         this.color = '#66B2FF'
         this.category = 'Agents'
-        this.icon = 'agent.svg'
+        this.icon = 'agent.png'
         this.description = `An agent optimized for retrieval during conversation, answering questions based on past dialogue, all using OpenAI's Function Calling`
         this.baseClasses = [this.type, ...getBaseClasses(AgentExecutor)]
         this.inputs = [

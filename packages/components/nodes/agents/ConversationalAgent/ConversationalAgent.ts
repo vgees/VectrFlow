@@ -34,7 +34,7 @@ class ConversationalAgent_Agents implements INode {
         this.type = 'AgentExecutor'
         this.color = '#66B2FF'
         this.category = 'Agents'
-        this.icon = 'agent.svg'
+        this.icon = 'agent.png'
         this.description = 'Conversational agent for a chat model. It will utilize chat specific prompts'
         this.baseClasses = [this.type, ...getBaseClasses(AgentExecutor)]
         this.inputs = [

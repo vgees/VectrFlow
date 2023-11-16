@@ -1,0 +1,28 @@
+version: '1.0'
+
+services:
+    vectrflow:
+        image: ganapathys/vectrflow
+        restart: always
+        environment:
+            - PORT=${PORT}
+            - VECTRFLOW_USERNAME=${VECTRFLOW_USERNAME}
+            - VECTRFLOW_PASSWORD=${VECTRFLOW_PASSWORD}
+            - DEBUG=${DEBUG}
+            - DATABASE_PATH=${DATABASE_PATH}
+            - DATABASE_TYPE=${DATABASE_TYPE}
+            - DATABASE_PORT=${DATABASE_PORT}
+            - DATABASE_HOST=${DATABASE_HOST}
+            - DATABASE_NAME=${DATABASE_NAME}
+            - DATABASE_USER=${DATABASE_USER}
+            - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+            - APIKEY_PATH=${APIKEY_PATH}
+            - SECRETKEY_PATH=${SECRETKEY_PATH}
+            - VECTRFLOW_SECRETKEY_OVERWRITE=${VECTRFLOW_SECRETKEY_OVERWRITE}
+            - LOG_LEVEL=${LOG_LEVEL}
+            - LOG_PATH=${LOG_PATH}
+        ports:
+            - '${PORT}:${PORT}'
+        volumes:
+            - ~/.vectrflow:/root/.vectrflow
+        command: /bin/sh -c "sleep 3; vectrflow start"

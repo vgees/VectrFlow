@@ -34,7 +34,7 @@ class GETApiChain_Chains implements INode {
         this.version = 1.0
         this.type = 'GETApiChain'
         this.color = '#66FFB2'
-        this.icon = 'apichain.svg'
+        this.icon = 'apichain.png'
         this.category = 'Chains'
         this.description = 'Chain to run queries against GET API'
         this.baseClasses = [this.type, ...getBaseClasses(APIChain)]
