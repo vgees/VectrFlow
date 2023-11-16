@@ -1,1 +1,1 @@
-## SaaS Based Low Code ETL Platform for Unstrustured data and build Generative AI apps
+## SaaS Based Low Code Platform for Unstrustured data and building Generative AI apps
