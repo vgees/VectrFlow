@@ -154,7 +154,10 @@ const CanvasNode = ({ data }) => {
                 content={false}
                 sx={{
                     padding: 0,
-                    borderColor: data.selected ? NodeHeader : NodeBorder
+                    borderColor: data.selected ? NodeHeader : NodeBorder,
+                    '&:hover': {
+                        borderColor: data.selected ? NodeHeader : NodeHeader
+                    }
                 }}
                 border={false}
             >
